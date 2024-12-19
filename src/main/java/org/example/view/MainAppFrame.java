@@ -7,7 +7,10 @@ import java.awt.*;
 
 public class MainAppFrame extends JFrame {
 
+    BaseUser user;
+
     public MainAppFrame (BaseUser user) {
+        this.user = user;
         initUI();
     }
 
@@ -47,11 +50,23 @@ public class MainAppFrame extends JFrame {
 
         // Diğer sayfalara geçişler
 
+        CardLayout cardLayout = new CardLayout();
+        JPanel mainCardPanel = new JPanel(cardLayout);
+
+        MainMenuPanel mainMenuPanel = new MainMenuPanel(mainCardPanel, cardLayout, user);
+        AccountPanel accountPanel = new AccountPanel(mainCardPanel, cardLayout, user);
+        TeamPanel teamPanel = new TeamPanel(mainCardPanel, cardLayout, user);
+
+        mainCardPanel.add(mainMenuPanel, "Main Menu");
+        mainCardPanel.add(accountPanel, "My Account");
+        mainCardPanel.add(teamPanel, "Team");
 
         // Center
 
-        JLabel welcome = new JLabel("Welcome");
 
+        cardLayout.show(mainCardPanel, "Main Menu");
+
+        this.add(mainCardPanel, BorderLayout.CENTER);
 
         // Header
 
@@ -68,7 +83,9 @@ public class MainAppFrame extends JFrame {
         mainMenuBtn.setPreferredSize(buttonSize);
 
         mainMenuBtn.addActionListener(e -> {
+            mainMenuPanel.refreshContent(mainCardPanel, cardLayout);
 
+            cardLayout.show(mainCardPanel, "Main Menu");
         });
 
         leftPanel.add(mainMenuBtn);
@@ -79,7 +96,9 @@ public class MainAppFrame extends JFrame {
         teamBtn.setPreferredSize(buttonSize);
 
         teamBtn.addActionListener(e -> {
+            teamPanel.refreshContent(mainCardPanel, cardLayout);
 
+            cardLayout.show(mainCardPanel, "Team");
         });
 
         leftPanel.add(teamBtn);
@@ -94,7 +113,9 @@ public class MainAppFrame extends JFrame {
         accountBtn.setPreferredSize(new Dimension(90,45));
 
         accountBtn.addActionListener(e -> {
+            accountPanel.refreshContent(mainCardPanel, cardLayout);
 
+            cardLayout.show(mainCardPanel, "My Account");
         });
 
         rightPanel.add(accountBtn);
