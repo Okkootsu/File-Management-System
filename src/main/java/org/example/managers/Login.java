@@ -60,15 +60,14 @@ public class Login {
                 String hPassword = resultSet.getString("password");
 
                 return !(verifyPassword(password, hPassword));
+            } else {
+                resultSet.close();
+                return true;
             }
-
-            resultSet.close();
 
         }catch (Exception e){
 
             return true;
         }
-
-        return false;
     }
 }

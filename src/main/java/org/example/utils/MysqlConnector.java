@@ -81,4 +81,24 @@ public class MysqlConnector {
 
         return -1;
     }
+
+    public void delUser(String username) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = DriverManager.getConnection(getSqlConnection(),getSqlUsername(),getSqlPassword());
+
+            Statement statement = connection.createStatement();
+
+            // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
+            String query = "DELETE FROM users " +
+                    "WHERE user_name = '"+username+"' ";
+
+            statement.execute(query);
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,"Hata Kodu:"+e.getMessage(),
+                    "Bir Hata Oluştu (delThisUser)",JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }

@@ -8,10 +8,25 @@ import java.awt.*;
 public class MainAppFrame extends JFrame {
 
     BaseUser user;
+    private static MainAppFrame instance;
 
     public MainAppFrame (BaseUser user) {
+        instance = this;
         this.user = user;
         initUI();
+    }
+
+    // Singleton tasarım deseni? -> uzaktan ana frame'e erişmek için
+    public static MainAppFrame getInstance(BaseUser user) {
+        if (instance == null) {
+            instance = new MainAppFrame(user);
+        }
+        return instance;
+    }
+
+    // Çıkış yapılınca paneli sıfırla
+    public static void resetInstance() {
+        instance = null;
     }
 
     private void initUI () {

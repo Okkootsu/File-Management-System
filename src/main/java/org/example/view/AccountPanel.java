@@ -9,7 +9,6 @@ import java.awt.*;
 
 public class AccountPanel extends JPanel implements IPanel {
 
-    private static final Logger log = LoggerFactory.getLogger(AccountPanel.class);
     BaseUser customer;
 
     public AccountPanel(JPanel mainCardPanel, CardLayout cardLayout, BaseUser customer) {
@@ -98,7 +97,15 @@ public class AccountPanel extends JPanel implements IPanel {
         JButton logOffBtn = new JButton("Çıkış Yap");
         logOffBtn.setFocusable(false);
         logOffBtn.addActionListener(e -> {
+            int choice = JOptionPane.showOptionDialog(this,"Çıkış yapmak istediğinize emin misiniz?",
+                    "Uyarı!",JOptionPane.YES_NO_OPTION,
+                    JOptionPane.INFORMATION_MESSAGE,null,null,0);
 
+            if(choice == 0) {
+                MainAppFrame.getInstance(customer).dispose();
+                MainAppFrame.resetInstance();
+                new LoginFrame();
+            }
         });
 
         gbc.gridx = 0; gbc.gridy = 3; gbc.gridwidth = 1;
@@ -116,7 +123,18 @@ public class AccountPanel extends JPanel implements IPanel {
         JButton delAccBtn = new JButton("Hesabı Sil");
         delAccBtn.setFocusable(false);
         delAccBtn.addActionListener(e -> {
+            int choice = JOptionPane.showOptionDialog(this,"Hesabınızı KALICI olarak silmek" +
+                            " istediğinize emin misiniz?",
+                    "Uyarı!",JOptionPane.YES_NO_OPTION,
+                    JOptionPane.INFORMATION_MESSAGE,null,null,0);
 
+            if(choice == 0) {
+                customer.delThisUser();
+
+                MainAppFrame.getInstance(customer).dispose();
+                MainAppFrame.resetInstance();
+                new LoginFrame();
+            }
         });
 
         gbc.gridx = 2; gbc.gridy = 3; gbc.gridwidth = 1;

@@ -27,10 +27,12 @@ public class Customer extends BaseUser{
         return team;
     }
 
+    @Override
     public void setUsername(String username) {
         this.username = username;
     }
 
+    @Override
     public void setPassword(String password) {
         this.password = password;
     }
@@ -43,5 +45,11 @@ public class Customer extends BaseUser{
     public int getId() {
         MysqlConnector mysqlConnector = new MysqlConnector();
         return mysqlConnector.getUserId(getUsername());
+    }
+
+    @Override
+    public void delThisUser() {
+        MysqlConnector mysqlConnector = new MysqlConnector();
+        mysqlConnector.delUser(getUsername());
     }
 }

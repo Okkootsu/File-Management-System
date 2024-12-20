@@ -7,4 +7,5 @@ public abstract class BaseUser {
     public abstract void setUsername(String username);
     public abstract void setPassword(String password);
     public abstract int getId();
+    public abstract void delThisUser();
 }
