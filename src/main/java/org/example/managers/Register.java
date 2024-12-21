@@ -18,8 +18,10 @@ public class Register {
                     "Bir Hata Oluştu",JOptionPane.ERROR_MESSAGE);
         } else {
             MysqlConnector mysqlConnector = new MysqlConnector();
-
             mysqlConnector.addUser(username, hashPassword(password));
+
+            BaseUser customer = new Customer(username, password);
+            customer.createFolder();
 
             JOptionPane.showMessageDialog(null,"Kullanıcı sisteme eklendi",
                     "Kullanıcı Oluşturuldu",JOptionPane.PLAIN_MESSAGE);

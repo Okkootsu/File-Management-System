@@ -34,8 +34,8 @@ public class MysqlConnector {
             Statement statement = connection.createStatement();
 
             // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
-            String query = "INSERT INTO users(user_name, password)" +
-                    "VALUES('"+username+"' , '"+password+"')";
+            String query = "INSERT INTO users(user_name, password, role)" +
+                    "VALUES('"+username+"' , '"+password+"' , 'customer' )";
 
             statement.execute(query);
 
@@ -45,6 +45,7 @@ public class MysqlConnector {
         }
     }
 
+    // Tek kullanıcının info'sunu döndürür
     public ResultSet getInfo(String username) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -99,6 +100,30 @@ public class MysqlConnector {
         }catch (Exception e){
             JOptionPane.showMessageDialog(null,"Hata Kodu:"+e.getMessage(),
                     "Bir Hata Oluştu (delThisUser)",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    // Tüm normal kullanıcıları döndür
+    public ResultSet getUsers() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = DriverManager.getConnection(getSqlConnection(),getSqlUsername(),getSqlPassword());
+
+            Statement statement = connection.createStatement();
+
+            // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
+            String query = "SELECT * FROM users " +
+                    "WHERE role = 'customer' ";
+
+
+            return statement.executeQuery(query);
+
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
+                    "Bir Hata Oluştu (getUsers)",JOptionPane.ERROR_MESSAGE);
+
+            return null;
         }
     }
 }
