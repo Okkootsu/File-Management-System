@@ -22,12 +22,26 @@ public class Login {
             JOptionPane.showMessageDialog(null,"Başarıyla giriş yapıldı!" ,
                     "Giriş Yapıldı",JOptionPane.PLAIN_MESSAGE);
 
-            BaseUser user = new Customer(username, password);
+            MysqlConnector mysqlConnector = new MysqlConnector();
+            String role = mysqlConnector.getRole(username);
 
-            LoginFrame.getInstance().dispose();
-            LoginFrame.resetInstance();
+            if (role.equals("admin")) {
+                BaseUser admin = new Admin(username, password);
 
-            new MainAppFrame(user);
+                LoginFrame.getInstance().dispose();
+                LoginFrame.resetInstance();
+
+                new MainAppFrame(admin);
+
+            } else {
+                BaseUser user = new Customer(username, password);
+
+                LoginFrame.getInstance().dispose();
+                LoginFrame.resetInstance();
+
+                new MainAppFrame(user);
+            }
+
         }
     }
 

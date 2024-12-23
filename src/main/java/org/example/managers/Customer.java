@@ -5,6 +5,7 @@ import org.example.view.MainAppFrame;
 
 import javax.swing.*;
 import java.io.File;
+import java.sql.ResultSet;
 
 public class Customer extends BaseUser{
 
@@ -119,5 +120,11 @@ public class Customer extends BaseUser{
             JOptionPane.showMessageDialog(null,"Hata Kodu:"+e.getMessage(),
                     "Bir Hata Oluştu (createFolder)",JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    // Yetkisiz erişim
+    @Override
+    public ResultSet getUsers() {
+        return null;
     }
 }

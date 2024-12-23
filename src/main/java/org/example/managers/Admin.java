@@ -4,12 +4,18 @@ import org.example.utils.MysqlConnector;
 import org.example.view.MainAppFrame;
 
 import javax.swing.*;
+import java.sql.ResultSet;
 
 public class Admin extends BaseUser{
 
     private String username;
     private String password;
     private final String role = "admin";
+
+    public Admin(String username, String password) {
+        setUsername(username);
+        setPassword(password);
+    }
 
     @Override
     public String getUsername() {
@@ -45,6 +51,12 @@ public class Admin extends BaseUser{
     @Override
     public JPanel getPanel() {
         return new MainAppFrame.MainAdminPanel(this);
+    }
+
+    @Override
+    public ResultSet getUsers() {
+        MysqlConnector mysqlConnector = new MysqlConnector();
+        return mysqlConnector.getUsers();
     }
 
     @Override

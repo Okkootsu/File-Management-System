@@ -126,4 +126,20 @@ public class MysqlConnector {
             return null;
         }
     }
+
+    public String getRole(String username) {
+        try {
+            ResultSet resultSet = getInfo(username);
+
+            resultSet.next();
+
+            return resultSet.getString("role");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Hata Kodu:"+e.getMessage(),
+                    "Bir Hata Oluştu (getUsers)",JOptionPane.ERROR_MESSAGE);
+
+            return "";
+        }
+    }
 }

@@ -10,7 +10,7 @@ import org.example.view.LoginFrame;
 // Dosya İşlemleri
 // Admin işlemleri
 // Loglama
-// Anormal davranışları gözlemleme ve durdruma
+// Anormal davranışları gözlemleme ve durdurma
 // Kullanıcı şifresini şifreleme +
 // GUI
 // Takımlaşma

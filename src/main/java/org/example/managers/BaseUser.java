@@ -1,6 +1,7 @@
 package org.example.managers;
 
 import javax.swing.*;
+import java.sql.ResultSet;
 
 public abstract class BaseUser {
 
@@ -19,4 +20,7 @@ public abstract class BaseUser {
 
     // Uygulama ekranı çağırma
     public abstract JPanel getPanel();
+
+    // Admin işlemleri
+    public abstract ResultSet getUsers();
 }

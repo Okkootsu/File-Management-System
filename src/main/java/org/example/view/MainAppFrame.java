@@ -57,7 +57,7 @@ public class MainAppFrame extends JFrame {
             JPanel footer = new JPanel();
 
 
-            header.setBackground(new Color(31, 80, 154));
+            header.setBackground(new Color(34, 40, 49));
             westContainer.setBackground(Color.red);
             eastContainer.setBackground(Color.DARK_GRAY);
             footer.setBackground(Color.black);
@@ -154,7 +154,7 @@ public class MainAppFrame extends JFrame {
     public static class MainAdminPanel extends JPanel {
 
         public MainAdminPanel (BaseUser admin) {
-            /*
+
             this.setLayout(new BorderLayout());
 
             // Sayfa Containerları
@@ -165,10 +165,10 @@ public class MainAppFrame extends JFrame {
             JPanel footer = new JPanel();
 
 
-            header.setBackground(new Color(31, 80, 154));
-            westContainer.setBackground(Color.red);
-            eastContainer.setBackground(Color.DARK_GRAY);
-            footer.setBackground(Color.black);
+            header.setBackground(new Color(34, 40, 49));
+            westContainer.setBackground(new Color(57, 62, 70));
+            eastContainer.setBackground(new Color(57, 62, 70));
+            footer.setBackground(new Color( 57, 62, 70));
 
 
             header.setPreferredSize(new Dimension(100,70));
@@ -187,13 +187,12 @@ public class MainAppFrame extends JFrame {
             CardLayout cardLayout = new CardLayout();
             JPanel mainCardPanel = new JPanel(cardLayout);
 
-            MainMenuPanel mainMenuPanel = new MainMenuPanel(mainCardPanel, cardLayout, customer);
-            AccountPanel accountPanel = new AccountPanel(mainCardPanel, cardLayout, customer);
-            TeamPanel teamPanel = new TeamPanel(mainCardPanel, cardLayout, customer);
+            MainMenuPanel.MainAdminPanel mainMenuPanel = new MainMenuPanel.MainAdminPanel(mainCardPanel, cardLayout, admin);
+            AccountPanel accountPanel = new AccountPanel(mainCardPanel, cardLayout, admin);
 
             mainCardPanel.add(mainMenuPanel, "Main Menu");
             mainCardPanel.add(accountPanel, "My Account");
-            mainCardPanel.add(teamPanel, "Team");
+
 
             // Center
 
@@ -225,18 +224,6 @@ public class MainAppFrame extends JFrame {
             leftPanel.add(mainMenuBtn);
 
 
-            JButton teamBtn = new JButton("Takım");
-            teamBtn.setFocusable(false);
-            teamBtn.setPreferredSize(buttonSize);
-
-            teamBtn.addActionListener(e -> {
-                teamPanel.refreshContent(mainCardPanel, cardLayout);
-
-                cardLayout.show(mainCardPanel, "Team");
-            });
-
-            leftPanel.add(teamBtn);
-
             JPanel rightPanel = new JPanel();
             rightPanel.setOpaque(false);
             rightPanel.setLayout(new FlowLayout(FlowLayout.RIGHT,10,15));
@@ -255,7 +242,7 @@ public class MainAppFrame extends JFrame {
             rightPanel.add(accountBtn);
 
             header.add(leftPanel);
-            header.add(rightPanel); */
+            header.add(rightPanel);
         }
     }
 }
