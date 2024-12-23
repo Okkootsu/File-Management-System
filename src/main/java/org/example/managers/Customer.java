@@ -5,6 +5,10 @@ import org.example.view.MainAppFrame;
 
 import javax.swing.*;
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.ResultSet;
 
 public class Customer extends BaseUser{
@@ -70,22 +74,17 @@ public class Customer extends BaseUser{
     }
 
     @Override
-    public void addToWorkPlace(String fileName) {
+    public void addToWorkPlace(File sourceFile) { // Dosyanın adı ile ilgili sıkıntı var
         try {
-            File addedFile = new File("src/SystemFolders/folders/OriginalFolders/" + getUsername() + "/" + fileName);
+            Path source = sourceFile.toPath();
+            String originalRoad = "src/SystemFolders/folders/OriginalFolders/" + getUsername() + "/";
+            Path target = Paths.get(originalRoad + sourceFile.getName());
+            Files.copy(source, target, StandardCopyOption.REPLACE_EXISTING);
 
-            if (addedFile.createNewFile()) {
-
-                JOptionPane.showMessageDialog(null,"Dosya sisteme yüklendi",
-                        "İşlem Başarılı",JOptionPane.INFORMATION_MESSAGE);
-
-            } else {
-                JOptionPane.showMessageDialog(null,"Bir şeyler ters gitti",
-                        "Bir Hata Oluştu (addToWorkPlace)",JOptionPane.ERROR_MESSAGE);
-            }
-
-        } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null,"Hata Kodu: " + exception.getMessage(),
+            JOptionPane.showMessageDialog(null,"Dosyanız sisteme aktarıldı",
+                    "İşlem başarılı",JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) { // sıkıntılı kısım
+            JOptionPane.showMessageDialog(null,"Hata Kodu:"+e.getMessage(),
                     "Bir Hata Oluştu (addToWorkPlace)",JOptionPane.ERROR_MESSAGE);
         }
     }

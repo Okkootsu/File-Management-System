@@ -63,9 +63,8 @@ public class MainMenuPanel {
 
                 if (choice == JFileChooser.APPROVE_OPTION) {
                     File selectedFile = upload.getSelectedFile();
-                    String fileName = selectedFile.getName();
 
-                    customer.addToWorkPlace(fileName);
+                    customer.addToWorkPlace(selectedFile);
                 }
 
             });

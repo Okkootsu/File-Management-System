@@ -4,6 +4,7 @@ import org.example.utils.MysqlConnector;
 import org.example.view.MainAppFrame;
 
 import javax.swing.*;
+import java.io.File;
 import java.sql.ResultSet;
 
 public class Admin extends BaseUser{
@@ -73,7 +74,7 @@ public class Admin extends BaseUser{
 
     // Yetkisiz erişim
     @Override
-    public void addToWorkPlace(String fileName) {
+    public void addToWorkPlace(File sourceFile) {
 
     }
 }

@@ -1,6 +1,7 @@
 package org.example.managers;
 
 import javax.swing.*;
+import java.io.File;
 import java.sql.ResultSet;
 
 public abstract class BaseUser {
@@ -16,7 +17,7 @@ public abstract class BaseUser {
 
     // Dosya işlemleri
     public abstract void createFolder();
-    public abstract void addToWorkPlace(String fileName);
+    public abstract void addToWorkPlace(File sourceFile);
 
     // Uygulama ekranı çağırma
     public abstract JPanel getPanel();
