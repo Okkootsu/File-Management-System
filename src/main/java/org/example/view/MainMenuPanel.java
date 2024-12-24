@@ -6,7 +6,13 @@ import org.example.utils.MysqlConnector;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.ResultSet;
+
+import static org.example.managers.FileManager.fileCopy;
+import static org.example.managers.FileManager.fileOpen;
+
 
 
 public class MainMenuPanel {
@@ -76,21 +82,71 @@ public class MainMenuPanel {
             JButton changeFolderBtn = new JButton("Dosyalarda Değişiklik Yap");
             changeFolderBtn.setFocusable(false);
             changeFolderBtn.addActionListener(e -> {
-                JFileChooser upload = new JFileChooser();
-                upload.setCurrentDirectory(new File("src/SystemFolders/folders/OriginalFolders/" + customer.getUsername()));
-                upload.showOpenDialog(this);
+
+                JFileChooser open = new JFileChooser();
+                open.setCurrentDirectory(new File("src/SystemFolders/folders/OriginalFolders/" + customer.getUsername()));
+                int choice = open.showOpenDialog(this);
+
+            if (choice == JFileChooser.APPROVE_OPTION) {
+                File selectedFile = open.getSelectedFile();
+
+                fileOpen(selectedFile);
+
+            }
+
             });
 
             gbc.gridx = 1; gbc.gridy = 3; gbc.gridwidth = 1;
             this.add(changeFolderBtn, gbc);
 
 
-            JButton seeSparedFoldersBtn = new JButton("Yedekleri Göster");
+            JPanel copyBtnPanel = new JPanel();
+            copyBtnPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 10,10));
+            copyBtnPanel.setBackground(Color.BLACK);
+            copyBtnPanel.setOpaque(false); // şeffaf
+            copyBtnPanel.setPreferredSize(new Dimension(100,25));
+
+            JButton copyBtn = new JButton("Yedekle");
+            copyBtn.setFocusable(false);
+            copyBtn.setPreferredSize(new Dimension(95,50));
+            copyBtn.addActionListener(e -> {
+                JOptionPane.showMessageDialog(null,"Dosyalar kopyalanıyor...",
+                        "Dosyalar Kopyalanıyor",JOptionPane.INFORMATION_MESSAGE);
+
+                Path source = Paths.get("src/SystemFolders/folders/OriginalFolders/" + customer.getUsername() + "/");
+                Path target = Paths.get("src/SystemFolders/folders/SavedFolders/" + customer.getUsername() + "/");
+
+                fileCopy(source, target);
+            });
+
+            copyBtnPanel.add(copyBtn);
+
+            gbc.gridx = 2; gbc.gridy = 3; gbc.gridwidth = 1;
+            this.add(copyBtnPanel, gbc);
+
+
+
+            JButton seeSparedFoldersBtn = new JButton("Yedekleri İndir");
             seeSparedFoldersBtn.setFocusable(false);
             seeSparedFoldersBtn.addActionListener(e -> {
-                JFileChooser upload = new JFileChooser();
-                upload.setCurrentDirectory(new File("src/SystemFolders/folders/SavedFolders/" + customer.getUsername()));
-                upload.showOpenDialog(this);
+                JFileChooser download = new JFileChooser();
+                download.setCurrentDirectory(new File("src/SystemFolders/folders/SavedFolders/" + customer.getUsername()));
+                int choice = download.showOpenDialog(this);
+
+                if( choice == JFileChooser.APPROVE_OPTION ) {
+
+                        File selectedFile = download.getSelectedFile();
+                        Path source = selectedFile.toPath();
+
+                        File downloads = new File(System.getProperty("user.home") + "\\Downloads\\" + selectedFile.getName());
+                        Path target = downloads.toPath();
+
+                        fileCopy(source, target);
+
+                        JOptionPane.showMessageDialog(null,"Yedek İndirildi.",
+                                "İndirme başarılı",JOptionPane.INFORMATION_MESSAGE);
+
+                }
             });
 
             gbc.gridx = 1; gbc.gridy = 4; gbc.gridwidth = 1;
