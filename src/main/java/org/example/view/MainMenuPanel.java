@@ -1,13 +1,14 @@
 package org.example.view;
 
 import org.example.managers.BaseUser;
+import org.example.managers.CopyProcess;
+import org.example.managers.ProgressBarProcess;
 import org.example.utils.MysqlConnector;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.sql.ResultSet;
 
 import static org.example.managers.FileManager.fileCopy;
@@ -110,13 +111,18 @@ public class MainMenuPanel {
             copyBtn.setFocusable(false);
             copyBtn.setPreferredSize(new Dimension(95,50));
             copyBtn.addActionListener(e -> {
-                JOptionPane.showMessageDialog(null,"Dosyalar kopyalanıyor...",
-                        "Dosyalar Kopyalanıyor",JOptionPane.INFORMATION_MESSAGE);
 
-                Path source = Paths.get("src/SystemFolders/folders/OriginalFolders/" + customer.getUsername() + "/");
-                Path target = Paths.get("src/SystemFolders/folders/SavedFolders/" + customer.getUsername() + "/");
+                CopyProcess copyProcess = new CopyProcess(customer);
+                ProgressBarProcess progress = new ProgressBarProcess();
 
-                fileCopy(source, target);
+                copyProcess.start();
+                progress.start();
+                try {
+                    copyProcess.join();
+                    progress.join();
+                } catch (InterruptedException ex) {
+
+                }
             });
 
             copyBtnPanel.add(copyBtn);

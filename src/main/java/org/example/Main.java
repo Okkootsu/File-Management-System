@@ -2,6 +2,8 @@ package org.example;
 
 import org.example.view.LoginFrame;
 
+import javax.swing.*;
+
 
 // Proje adı -> Dosya Depolama/Yedekleme Sistemi, Yapılacaklar;
 // Kullanıcı giriş sistemi +
@@ -18,7 +20,6 @@ import org.example.view.LoginFrame;
 
 public class Main {
     public static void main(String[] args) {
-
-        new LoginFrame();
+        SwingUtilities.invokeLater(LoginFrame::new);
     }
 }
