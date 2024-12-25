@@ -16,11 +16,12 @@ public class Customer extends BaseUser{
     private String username;
     private String password;
     private final String role = "customer";
-    private String team = "None";
+    private String team;
 
     public Customer (String username, String password) {
         setUsername(username);
         setPassword(password);
+        setTeam(getTeamFromDB());
     }
 
     @Override
@@ -60,6 +61,20 @@ public class Customer extends BaseUser{
     public int getId() {
         MysqlConnector mysqlConnector = new MysqlConnector();
         return mysqlConnector.getUserId(getUsername());
+    }
+
+    private String getTeamFromDB() {
+        MysqlConnector mysqlConnector = new MysqlConnector();
+        ResultSet resultSet = mysqlConnector.getInfo(getUsername());
+
+        try {
+            resultSet.next();
+            return resultSet.getString("team");
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
+                    "Bir Hata Oluştu (getTeamFromDB)",JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
     }
 
     @Override

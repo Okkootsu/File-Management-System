@@ -1,6 +1,7 @@
 package org.example.view;
 
 import org.example.managers.BaseUser;
+import org.example.managers.Customer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -45,7 +46,7 @@ public class MainAppFrame extends JFrame {
 
     public static class MainCustomerPanel extends JPanel{
 
-        public MainCustomerPanel (BaseUser customer) {
+        public MainCustomerPanel (Customer customer) {
 
             this.setLayout(new BorderLayout());
 
@@ -81,11 +82,11 @@ public class MainAppFrame extends JFrame {
 
             MainMenuPanel.MainCustomerPanel mainMenuPanel = new MainMenuPanel.MainCustomerPanel(mainCardPanel, cardLayout, customer);
             AccountPanel accountPanel = new AccountPanel(mainCardPanel, cardLayout, customer);
-            TeamPanel teamPanel = new TeamPanel(mainCardPanel, cardLayout, customer);
+            MainTeamPanel teamPanel = new MainTeamPanel(mainCardPanel, cardLayout, customer);
 
             mainCardPanel.add(mainMenuPanel, "Main Menu");
             mainCardPanel.add(accountPanel, "My Account");
-            mainCardPanel.add(teamPanel, "Team");
+            mainCardPanel.add(teamPanel, "Main Team");
 
             // Center
 
@@ -124,7 +125,7 @@ public class MainAppFrame extends JFrame {
             teamBtn.addActionListener(e -> {
                 teamPanel.refreshContent(mainCardPanel, cardLayout);
 
-                cardLayout.show(mainCardPanel, "Team");
+                cardLayout.show(mainCardPanel, "Main Team");
             });
 
             leftPanel.add(teamBtn);

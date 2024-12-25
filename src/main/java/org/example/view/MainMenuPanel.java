@@ -2,6 +2,7 @@ package org.example.view;
 
 import org.example.managers.BaseUser;
 import org.example.managers.CopyProcess;
+import org.example.managers.Customer;
 import org.example.managers.ProgressBarProcess;
 import org.example.utils.MysqlConnector;
 
@@ -22,9 +23,9 @@ public class MainMenuPanel {
     // Dosya işlemlerinin yapıldığı kısım
     public static class MainCustomerPanel extends JPanel implements IPanel {
 
-        BaseUser customer;
+        Customer customer;
 
-        public MainCustomerPanel(JPanel mainCardPanel, CardLayout cardLayout, BaseUser customer) {
+        public MainCustomerPanel(JPanel mainCardPanel, CardLayout cardLayout, Customer customer) {
             this.customer = customer;
             initializePanel(mainCardPanel, cardLayout);
         }

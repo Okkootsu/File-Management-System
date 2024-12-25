@@ -34,8 +34,8 @@ public class MysqlConnector {
             Statement statement = connection.createStatement();
 
             // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
-            String query = "INSERT INTO users(user_name, password, role)" +
-                    "VALUES('"+username+"' , '"+password+"' , 'customer' )";
+            String query = "INSERT INTO users(user_name, password, role, team)" +
+                    "VALUES('"+username+"' , '"+password+"' , 'customer' , 'None' )";
 
             statement.execute(query);
 
@@ -142,4 +142,48 @@ public class MysqlConnector {
             return "";
         }
     }
+
+    public ResultSet getAllTeams() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = DriverManager.getConnection(getSqlConnection(),getSqlUsername(),getSqlPassword());
+
+            Statement statement = connection.createStatement();
+
+            // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
+            String query = "SELECT team FROM users " ;
+
+            return statement.executeQuery(query);
+
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
+                    "Bir Hata Oluştu (getUsers)",JOptionPane.ERROR_MESSAGE);
+
+            return null;
+        }
+    }
+
+    public void setTeamName(String username ,String teamName){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = DriverManager.getConnection(getSqlConnection(),getSqlUsername(),getSqlPassword());
+
+            Statement statement = connection.createStatement();
+
+            // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
+            String query = "UPDATE users " +
+                    "SET team = '"+teamName+"' " +
+                    "WHERE user_name = '"+username+"' " ;
+
+            statement.execute(query);
+
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
+                    "Bir Hata Oluştu (setTeamName)",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+
 }

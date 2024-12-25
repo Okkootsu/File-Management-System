@@ -8,8 +8,8 @@ import javax.swing.*;
 // Proje adı -> Dosya Depolama/Yedekleme Sistemi, Yapılacaklar;
 // Kullanıcı giriş sistemi +
 // Kullanıcı işlemleri
-// Depolama ve Yedekleme
-// Dosya İşlemleri
+// Depolama ve Yedekleme +
+// Dosya İşlemleri +
 // Admin işlemleri
 // Loglama
 // Anormal davranışları gözlemleme ve durdurma
