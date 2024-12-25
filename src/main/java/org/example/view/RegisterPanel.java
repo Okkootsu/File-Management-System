@@ -14,6 +14,7 @@ public class RegisterPanel extends JPanel implements IPanel{
 
     @Override
     public void initializePanel(JPanel mainCardPanel, CardLayout cardLayout) {
+        this.setBackground(new Color(232, 232, 232));
         refreshContent(mainCardPanel, cardLayout);
     }
 

@@ -77,6 +77,22 @@ public class Customer extends BaseUser{
         }
     }
 
+    public String getInv() {
+        MysqlConnector mysqlConnector = new MysqlConnector();
+
+        try {
+            ResultSet resultSet = mysqlConnector.getInfo(getUsername());
+            resultSet.next();
+
+            return resultSet.getString("invite_from");
+
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
+                    "Bir Hata Oluştu (getTeamFromDB)",JOptionPane.ERROR_MESSAGE);
+            return "";
+        }
+    }
+
     @Override
     public JPanel getPanel() {
         return new MainAppFrame.MainCustomerPanel(this);
@@ -86,6 +102,11 @@ public class Customer extends BaseUser{
     public void delThisUser() {
         MysqlConnector mysqlConnector = new MysqlConnector();
         mysqlConnector.delUser(getUsername());
+    }
+
+    public void sendInv(String sendTo) {
+        MysqlConnector mysqlConnector = new MysqlConnector();
+        mysqlConnector.sendInvite(getTeam(), sendTo);
     }
 
     @Override

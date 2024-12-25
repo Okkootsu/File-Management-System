@@ -32,6 +32,8 @@ public class MainMenuPanel {
 
         @Override
         public void initializePanel(JPanel mainCardPanel, CardLayout cardLayout) {
+            this.setOpaque(true);
+            this.setBackground(new Color(155, 164, 180));
             refreshContent(mainCardPanel, cardLayout);
         }
 

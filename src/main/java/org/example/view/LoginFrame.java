@@ -31,7 +31,7 @@ public class LoginFrame extends JFrame {
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Login");
-        this.setBackground(new Color(203, 220, 235));
+        this.setBackground(new Color(232, 232, 232));
         this.setSize(500,450);
         this.setLocationRelativeTo(null);
         this.setLayout(new BorderLayout());
@@ -44,16 +44,22 @@ public class LoginFrame extends JFrame {
         JPanel footer = new JPanel();
 
 
-        header.setBackground(new Color(31, 80, 154));
-        westContainer.setBackground(Color.red);
-        eastContainer.setBackground(Color.DARK_GRAY);
-        footer.setBackground(Color.black);
+        header.setBackground(new Color(232, 232, 232));
+        westContainer.setBackground(new Color(232, 232, 232));
+        eastContainer.setBackground(new Color(232, 232, 232));
+        footer.setBackground(new Color(232, 232, 232));
 
 
         header.setPreferredSize(new Dimension(100,45));
         westContainer.setPreferredSize(new Dimension(50,100)); //100
         eastContainer.setPreferredSize(new Dimension(50,100)); //100->150(*)
         footer.setPreferredSize(new Dimension(100,45));
+
+
+        header.setOpaque(true);
+        westContainer.setOpaque(true); // Şeffaf
+        eastContainer.setOpaque(true);
+        footer.setOpaque(true);
 
 
         this.add(header, BorderLayout.NORTH);

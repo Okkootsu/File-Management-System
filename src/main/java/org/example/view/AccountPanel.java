@@ -16,7 +16,7 @@ public class AccountPanel extends JPanel implements IPanel {
 
     @Override
     public void initializePanel(JPanel mainCardPanel, CardLayout cardLayout) {
-
+        this.setBackground(new Color(155, 164, 180));
         refreshContent(mainCardPanel, cardLayout);
     }
 
@@ -36,6 +36,9 @@ public class AccountPanel extends JPanel implements IPanel {
         eastContainer.setBackground(Color.green);
         westContainer.setBackground(Color.magenta);
         footer.setBackground(Color.YELLOW);
+        eastContainer.setOpaque(false);
+        westContainer.setOpaque(false);
+        footer.setOpaque(false);
 
         this.add(eastContainer, BorderLayout.EAST);
         this.add(westContainer, BorderLayout.WEST);
@@ -44,6 +47,7 @@ public class AccountPanel extends JPanel implements IPanel {
 
         JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new GridBagLayout());
+        centerPanel.setBackground(new Color(155, 164, 180));
 
         GridBagConstraints gbc = new GridBagConstraints();
 

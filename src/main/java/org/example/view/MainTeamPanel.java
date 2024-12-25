@@ -18,6 +18,7 @@ public class MainTeamPanel extends JPanel implements IPanel {
 
     @Override
     public void initializePanel(JPanel mainCardPanel, CardLayout cardLayout) {
+        this.setBackground(new Color(155, 164, 180));
         refreshContent(mainCardPanel, cardLayout);
     }
 
@@ -56,7 +57,23 @@ public class MainTeamPanel extends JPanel implements IPanel {
         JButton seeInvitesBtn = new JButton("Takım Davetleri");
         seeInvitesBtn.setFocusable(false);
         seeInvitesBtn.addActionListener(e -> {
+            if( customer.getInv().equals("None") || !(customer.getTeam().equals("None")) ) {
+                JOptionPane.showMessageDialog(null,"Hiç davetiniz yok",
+                        "Bilgilendirme",JOptionPane.INFORMATION_MESSAGE);
+            } else {
 
+                int choice = JOptionPane.showOptionDialog(this,customer.getInv()+" adlı takıma" +
+                                " katılmak ister misiniz?",
+                        "Bilgilendirme",JOptionPane.YES_NO_OPTION,
+                        JOptionPane.INFORMATION_MESSAGE,null,null,0);
+
+                if(choice == 0) {
+                    MysqlConnector mysqlConnector = new MysqlConnector();
+                    mysqlConnector.setTeamName(customer.getUsername(), customer.getInv());
+
+                    customer.setTeam(customer.getInv());
+                }
+            }
         });
 
         gbc.gridx = 1; gbc.gridy = 2; gbc.gridwidth = 1;

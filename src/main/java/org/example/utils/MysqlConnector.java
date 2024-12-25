@@ -185,5 +185,25 @@ public class MysqlConnector {
         }
     }
 
+    public void sendInvite(String inviter, String invited) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = DriverManager.getConnection(getSqlConnection(),getSqlUsername(),getSqlPassword());
+
+            Statement statement = connection.createStatement();
+
+            // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
+            String query = "UPDATE users " +
+                    "SET invite_from = '"+inviter+"' " +
+                    "WHERE user_name = '"+invited+"' " ;
+
+            statement.execute(query);
+
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
+                    "Bir Hata Oluştu (sendInvite)",JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
 }

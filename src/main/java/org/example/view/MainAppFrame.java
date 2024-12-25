@@ -34,7 +34,7 @@ public class MainAppFrame extends JFrame {
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setTitle("Main App");
-        this.setBackground(new Color(203, 220, 235));
+        this.setBackground(new Color(221, 230, 237));
         this.setSize(1250,700);
         this.setLocationRelativeTo(null);
         this.setLayout(new BorderLayout());
@@ -59,9 +59,9 @@ public class MainAppFrame extends JFrame {
 
 
             header.setBackground(new Color(34, 40, 49));
-            westContainer.setBackground(Color.red);
-            eastContainer.setBackground(Color.DARK_GRAY);
-            footer.setBackground(Color.black);
+            westContainer.setBackground(new Color(155, 164, 180));
+            eastContainer.setBackground(new Color(155, 164, 180));
+            footer.setBackground(new Color(155, 164, 180));
 
 
             header.setPreferredSize(new Dimension(100,70));
