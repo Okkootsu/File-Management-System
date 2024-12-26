@@ -5,7 +5,13 @@ import org.example.utils.MysqlConnector;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.ResultSet;
+
+import static org.example.managers.FileManager.fileOpen;
 
 public class TeamPanel extends JPanel implements IPanel {
 
@@ -96,7 +102,16 @@ public class TeamPanel extends JPanel implements IPanel {
         JButton addFolderBtn = new JButton("Dosya Ekle");
         addFolderBtn.setFocusable(false);
         addFolderBtn.addActionListener(e -> {
+            JFileChooser upload = new JFileChooser();
+            upload.setCurrentDirectory(new File("C:/Users/Volkan/Desktop/Proje"));
 
+            int choice = upload.showOpenDialog(this);
+
+            if(choice == JFileChooser.APPROVE_OPTION) {
+                File selectedFile = upload.getSelectedFile();
+
+                customer.addToTeamWorkPlace(selectedFile);
+            }
         });
         gbc.gridx = 1;  gbc.gridy = 0;  gbc.gridwidth = 1;
         southPanel.add(addFolderBtn, gbc);
@@ -105,7 +120,16 @@ public class TeamPanel extends JPanel implements IPanel {
         JButton seeFoldersBtn = new JButton("Dosyaları Görüntüle");
         seeFoldersBtn.setFocusable(false);
         seeFoldersBtn.addActionListener(e -> {
+            JFileChooser open = new JFileChooser();
+            open.setCurrentDirectory(new File("src/SystemFolders/TeamFolders/OriginalFolders/" + customer.getTeam()));
+            int choice = open.showOpenDialog(this);
 
+            if (choice == JFileChooser.APPROVE_OPTION) {
+                File selectedFile = open.getSelectedFile();
+
+                fileOpen(selectedFile);
+
+            }
         });
         gbc.gridx = 2;  gbc.gridy = 0;  gbc.gridwidth = 1;
         southPanel.add(seeFoldersBtn, gbc);
@@ -114,7 +138,25 @@ public class TeamPanel extends JPanel implements IPanel {
         JButton removeFolderBtn = new JButton("Dosya Sil");
         removeFolderBtn.setFocusable(false);
         removeFolderBtn.addActionListener(e -> {
+            JFileChooser del = new JFileChooser();
+            del.setCurrentDirectory(new File("src/SystemFolders/TeamFolders/OriginalFolders/" + customer.getTeam()));
+            int choice = del.showOpenDialog(this);
 
+            if (choice == JFileChooser.APPROVE_OPTION) {
+                int approve = JOptionPane.showOptionDialog(this,"Bu dosyayı silmek istediğinize emin misiniz?",
+                        "Uyarı!",JOptionPane.YES_NO_OPTION,
+                        JOptionPane.INFORMATION_MESSAGE,null,null,0);
+
+                if (approve == 0) {
+                    File selectedFile = del.getSelectedFile();
+                    try {
+                        Files.delete(selectedFile.toPath());
+                    } catch (IOException ex) {
+                        JOptionPane.showMessageDialog(null,"Hata Kodu:"+ex.getMessage(),
+                                "Bir Hata Oluştu (fileDelete)",JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
         });
         gbc.gridx = 3;  gbc.gridy = 0;  gbc.gridwidth = 1;
         southPanel.add(removeFolderBtn, gbc);

@@ -113,6 +113,8 @@ public class MainTeamPanel extends JPanel implements IPanel {
 
                     customer.setTeam(teamName);
 
+                    customer.createTeamFolder();
+
                     JOptionPane.showMessageDialog(null,"Takım oluşturuldu",
                             "Bilgilendirme",JOptionPane.INFORMATION_MESSAGE);
                 }

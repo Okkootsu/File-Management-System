@@ -34,8 +34,8 @@ public class MysqlConnector {
             Statement statement = connection.createStatement();
 
             // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
-            String query = "INSERT INTO users(user_name, password, role, team)" +
-                    "VALUES('"+username+"' , '"+password+"' , 'customer' , 'None' )";
+            String query = "INSERT INTO users(user_name, password, role, team, invite_from)" +
+                    "VALUES('"+username+"' , '"+password+"' , 'customer' , 'None' , 'None' )";
 
             statement.execute(query);
 

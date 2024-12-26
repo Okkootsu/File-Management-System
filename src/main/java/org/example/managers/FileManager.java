@@ -19,6 +19,28 @@ public class FileManager {
         }
     } */
 
+    public static void fileDelete(Path dir) {
+        try {
+            Files.walkFileTree(dir, new SimpleFileVisitor<>(){
+                @Override
+                public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                    Files.delete(file);
+                    return FileVisitResult.CONTINUE;
+                }
+
+                @Override
+                public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+                    Files.delete(dir);
+                    return FileVisitResult.CONTINUE;
+                }
+
+            });
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Hata Kodu:"+e.getMessage(),
+                    "Bir Hata Oluştu (fileDelete)",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     public static void fileCopy(Path source, Path target) {
         try {
             Files.walkFileTree(source, new SimpleFileVisitor<>(){

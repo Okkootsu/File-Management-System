@@ -11,6 +11,8 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.sql.ResultSet;
 
+import static org.example.managers.FileManager.fileDelete;
+
 public class Customer extends BaseUser{
 
     private String username;
@@ -100,6 +102,11 @@ public class Customer extends BaseUser{
 
     @Override
     public void delThisUser() {
+        Path deleteOriginalFiles = Paths.get("src/SystemFolders/folders/OriginalFolders/" + getUsername());
+        Path deleteSavedFiles = Paths.get("src/SystemFolders/folders/SavedFolders/" + getUsername());
+        fileDelete(deleteOriginalFiles);
+        fileDelete(deleteSavedFiles);
+
         MysqlConnector mysqlConnector = new MysqlConnector();
         mysqlConnector.delUser(getUsername());
     }
@@ -154,6 +161,41 @@ public class Customer extends BaseUser{
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Hata Kodu:"+e.getMessage(),
                     "Bir Hata Oluştu (createFolder)",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void createTeamFolder() {
+        try {
+
+            // Orijinal Çalışma Alanı
+            File original = new File("src/SystemFolders/TeamFolders/OriginalFolders/" + getTeam());
+
+            if (original.mkdir()) {
+
+            } else {
+                JOptionPane.showMessageDialog(null,"Bir şeyler ters gitti",
+                        "Bir Hata Oluştu (createTeamFolder)",JOptionPane.ERROR_MESSAGE);
+            }
+
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Hata Kodu:"+e.getMessage(),
+                    "Bir Hata Oluştu (createTeamFolder)",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void addToTeamWorkPlace(File sourceFile) {
+        try {
+            Path source = sourceFile.toPath();
+            String originalRoad = "src/SystemFolders/TeamFolders/OriginalFolders/" + getTeam() + "/";
+            Path target = Paths.get(originalRoad + sourceFile.getName());
+            Files.copy(source, target, StandardCopyOption.REPLACE_EXISTING);
+
+            JOptionPane.showMessageDialog(null,"Dosyanız sisteme aktarıldı",
+                    "İşlem başarılı",JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) { // sıkıntılı kısım
+            JOptionPane.showMessageDialog(null,"Hata Kodu:"+e.getMessage(),
+                    "Bir Hata Oluştu (addToWorkPlace)",JOptionPane.ERROR_MESSAGE);
         }
     }
 

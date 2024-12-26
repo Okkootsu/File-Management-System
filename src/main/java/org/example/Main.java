@@ -15,7 +15,7 @@ import javax.swing.*;
 // Anormal davranışları gözlemleme ve durdurma
 // Kullanıcı şifresini şifreleme +
 // GUI
-// Takımlaşma
+// Takımlaşma +
 
 
 public class Main {
