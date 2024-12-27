@@ -1,12 +1,16 @@
 package org.example.view;
 
-import org.example.managers.Customer;
-import org.example.managers.Log;
+import org.example.managers.*;
 import org.example.utils.MysqlConnector;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.example.managers.FileManager.fileOpen;
 
 public class NewTeamPanel extends JPanel implements IPanel {
 
@@ -119,7 +123,20 @@ public class NewTeamPanel extends JPanel implements IPanel {
         JButton addFileBtn = new JButton("Dosya Yükle");
         addFileBtn.setFocusable(false);
         addFileBtn.addActionListener(e -> {
+            JFileChooser upload = new JFileChooser();
+            upload.setCurrentDirectory(new File("C:/Users/Volkan/Desktop/Proje"));
 
+            int choice = upload.showOpenDialog(this);
+
+            if(choice == JFileChooser.APPROVE_OPTION) {
+
+                File selectedFile = upload.getSelectedFile();
+
+                customer.addToTeamWorkPlace(selectedFile);
+
+                log.logger.info(customer.getUsername() + " adlı kullanıcı  "+selectedFile.getName()+" adlı dosyayı" +
+                        " kendi takım klasörüne ekledi ");
+            }
         });
         gbc.gridx = 1;  gbc.gridy = 2;  gbc.gridwidth = 1;
         rightPanel.add(addFileBtn, gbc);
@@ -128,7 +145,20 @@ public class NewTeamPanel extends JPanel implements IPanel {
         JButton openFileBtn = new JButton("Dosya Düzenle");
         openFileBtn.setFocusable(false);
         openFileBtn.addActionListener(e -> {
+            JFileChooser open = new JFileChooser();
+            open.setCurrentDirectory(new File("src/SystemFolders/TeamFolders/" + customer.getUsername() ));
 
+            int choice = open.showOpenDialog(this);
+
+            if(choice == JFileChooser.APPROVE_OPTION) {
+
+                File selectedFile = open.getSelectedFile();
+
+                fileOpen(selectedFile);
+
+                log.logger.info(customer.getUsername() + " adlı kullanıcı "+selectedFile.getName()+" adlı" +
+                        " dosyayı kendi takım klasöründe açtı ");
+            }
         });
         gbc.gridx = 1;  gbc.gridy = 3;  gbc.gridwidth = 1;
         rightPanel.add(openFileBtn, gbc);
@@ -137,7 +167,7 @@ public class NewTeamPanel extends JPanel implements IPanel {
         JButton shareFileBtn = new JButton("Dosyaları Paylaş");
         shareFileBtn.setFocusable(false);
         shareFileBtn.addActionListener(e -> {
-
+            share();
         });
         gbc.gridx = 1;  gbc.gridy = 4;  gbc.gridwidth = 1;
         rightPanel.add(shareFileBtn, gbc);
@@ -371,5 +401,89 @@ public class NewTeamPanel extends JPanel implements IPanel {
         cellPanel.add(buttonPanel);
 
         return cellPanel;
+    }
+
+    private void share() {
+
+        Log log = Log.getInstance();
+
+        JFrame frame = new JFrame("Takım Arkadaşları");
+        frame.setLocation(500,250);
+        frame.setSize(500,350);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setLayout(new BorderLayout());
+
+        // Kullanıcılar kısmı
+        JPanel friendsPanel = new JPanel();
+        friendsPanel.setLayout(new GridBagLayout());
+
+        List<String> chosenFriends = new ArrayList<>();
+
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        gbc.weightx = 1.0; // Yatayda boş alan paylaşımı
+        gbc.weighty = 1.0; // Dikeyde boş alan paylaşımı
+        gbc.fill = GridBagConstraints.BOTH; // Hem yatayda hem dikeyde genişle
+        gbc.insets = new Insets(10, 10, 10, 10); // Boşlukları sıfırla
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+
+        MysqlConnector mysqlConnector = new MysqlConnector();
+        ResultSet resultSet = mysqlConnector.getFriends(customer.getUsername());
+
+        try {
+            while(resultSet.next()) {
+
+                JCheckBox checkBox = new JCheckBox(resultSet.getString("friend"));
+                checkBox.setFocusable(false);
+                checkBox.addActionListener(e -> {
+                    if (checkBox.isSelected()) {
+                        chosenFriends.add(checkBox.getText());
+                    } else {
+                        chosenFriends.remove(checkBox.getText());
+                    }
+                });
+
+                friendsPanel.add(checkBox, gbc);
+                gbc.gridy++;
+            }
+
+            frame.add(friendsPanel, BorderLayout.CENTER);
+
+            // Buton kısmı
+            JPanel buttonPanel = new JPanel();
+            buttonPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 10,15));
+
+            JButton shareBtn = new JButton("Paylaş");
+            shareBtn.setFocusable(false);
+            shareBtn.addActionListener(e -> {
+
+                TeamCopyProcess copyProcess = new TeamCopyProcess(customer, chosenFriends);
+                ProgressBarProcess progress = new ProgressBarProcess();
+
+                copyProcess.start();
+                progress.start();
+                try {
+                    copyProcess.join();
+                    progress.join();
+                } catch (InterruptedException ex) {
+
+                }
+
+                log.logger.info(customer.getUsername() + " adlı kullanıcı takım arkadaşlarıyla TeamFolders" +
+                        " dizinindeki dosyalarını paylaştı ");
+
+            });
+            buttonPanel.add(shareBtn);
+
+            frame.add(buttonPanel, BorderLayout.SOUTH);
+
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
+                    "Bir Hata Oluştu (share)",JOptionPane.ERROR_MESSAGE);
+        }
+
     }
 }

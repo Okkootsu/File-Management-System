@@ -71,3 +71,33 @@
 2024-12-27 16:17:04 INFO    volkan tarafından eren adlı kişi takım arkadaşı olarak eklendi 
 2024-12-27 16:17:32 INFO    volkan adlı kullanıcı çıkış yaptı 
 2024-12-27 16:17:36 INFO    kerem tarafından başarıyla giriş yapıldı 
+2024-12-27 18:03:24 INFO    Uygulama açıldı 
+2024-12-27 18:03:34 INFO    furkan adlı kullanıcı sisteme başarıyla kayıt oldu 
+2024-12-27 18:09:52 INFO    Uygulama açıldı 
+2024-12-27 18:09:59 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-27 19:53:40 INFO    Uygulama açıldı 
+2024-12-27 19:53:50 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-27 19:53:59 INFO    furkan tarafından eren adlı kişiye takım isteği gönderildi 
+2024-12-27 19:54:03 INFO    furkan adlı kullanıcı çıkış yaptı 
+2024-12-27 19:54:08 INFO    eren tarafından başarıyla giriş yapıldı 
+2024-12-27 19:54:19 INFO    eren tarafından furkan adlı kişi takım arkadaşı olarak eklendi 
+2024-12-27 19:54:51 INFO    eren adlı kullanıcı çıkış yaptı 
+2024-12-27 19:54:56 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-27 19:56:20 INFO    Uygulama açıldı 
+2024-12-27 19:56:31 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-27 19:56:49 INFO    furkan adlı kullanıcı deneme.txt adlı dosyayı kendi takım klasöründe açtı  
+2024-12-27 19:56:56 INFO    furkan adlı kullanıcı deneme.txt adlı dosyayı kendi takım klasöründe açtı  
+2024-12-27 19:57:05 INFO    furkan adlı kullanıcı deneme.txt adlı dosyayı kendi takım klasöründe açtı  
+2024-12-27 19:57:12 INFO    furkan adlı kullanıcı takım arkadaşlarıyla TeamFolders dizinindeki dosyalarını paylaştı  
+2024-12-27 19:57:24 INFO    furkan adlı kullanıcı çıkış yaptı 
+2024-12-27 19:57:31 INFO    eren tarafından başarıyla giriş yapıldı 
+2024-12-27 19:59:41 INFO    Uygulama açıldı 
+2024-12-27 19:59:50 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-27 19:59:59 INFO    furkan tarafından kerem adlı kişiye takım isteği gönderildi 
+2024-12-27 20:00:31 INFO    furkan adlı kullanıcı çıkış yaptı 
+2024-12-27 20:00:36 INFO    kerem tarafından başarıyla giriş yapıldı 
+2024-12-27 20:00:43 INFO    kerem tarafından furkan adlı kişi takım arkadaşı olarak eklendi 
+2024-12-27 20:00:52 INFO    kerem adlı kullanıcı çıkış yaptı 
+2024-12-27 20:00:58 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-27 20:01:08 INFO    furkan adlı kullanıcı deneme.txt adlı dosyayı kendi takım klasöründe açtı  
+2024-12-27 20:01:49 INFO    furkan adlı kullanıcı takım arkadaşlarıyla TeamFolders dizinindeki dosyalarını paylaştı  

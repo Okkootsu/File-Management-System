@@ -25,8 +25,10 @@ public class Register {
             MysqlConnector mysqlConnector = new MysqlConnector();
             mysqlConnector.addUser(username, hashPassword(password));
 
-            BaseUser customer = new Customer(username, password);
+            Customer customer = new Customer(username, password);
             customer.createFolder();
+
+            customer.createTeamFolder();
 
             log.logger.info(customer.getUsername()+" adlı kullanıcı sisteme başarıyla kayıt oldu");
 

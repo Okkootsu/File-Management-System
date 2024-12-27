@@ -130,12 +130,12 @@ public class Customer extends BaseUser{
         mysqlConnector.addFriend(getUsername(), friendName, inviteId);
     }
 
-    /*
+
     public void createTeamFolder() {
         try {
 
             // Orijinal Çalışma Alanı
-            File original = new File("src/SystemFolders/TeamFolders/OriginalFolders/" + getTeam());
+            File original = new File("src/SystemFolders/TeamFolders/" + getUsername());
 
             if (original.mkdir()) {
 
@@ -154,7 +154,7 @@ public class Customer extends BaseUser{
     public void addToTeamWorkPlace(File sourceFile) {
         try {
             Path source = sourceFile.toPath();
-            String originalRoad = "src/SystemFolders/TeamFolders/OriginalFolders/" + getTeam() + "/";
+            String originalRoad = "src/SystemFolders/TeamFolders/" + getUsername() + "/";
             Path target = Paths.get(originalRoad + sourceFile.getName());
             Files.copy(source, target, StandardCopyOption.REPLACE_EXISTING);
 
@@ -165,7 +165,7 @@ public class Customer extends BaseUser{
                     "Bir Hata Oluştu (addToWorkPlace)",JOptionPane.ERROR_MESSAGE);
         }
     }
-    */
+
 
     // Yetkisiz erişim
     @Override
