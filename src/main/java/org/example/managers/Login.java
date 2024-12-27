@@ -12,13 +12,22 @@ import static org.example.utils.PasswordHashing.verifyPassword;
 public class Login {
 
     public Login (String username, String password) {
+
+        Log log = Log.getInstance();
+
         if(isIncorrect(username, password)){
+
+            log.logger.warning(username+" tarafından başarısız giriş yapma işlemi");
+
             JOptionPane.showMessageDialog(null,"Girilen bilgiler hatalı \n" +
                             "Lütfen tekrar deneyiniz",
                     "Uyarı",JOptionPane.INFORMATION_MESSAGE);
 
         }
         else {
+
+            log.logger.info(username+" tarafından başarıyla giriş yapıldı");
+
             JOptionPane.showMessageDialog(null,"Başarıyla giriş yapıldı!" ,
                     "Giriş Yapıldı",JOptionPane.PLAIN_MESSAGE);
 

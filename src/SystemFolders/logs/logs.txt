@@ -1,0 +1,32 @@
+2024-12-26 16:05:02 INFO    Uygulama açıldı 
+2024-12-26 16:05:11 WARNING Başarısız kayıt olma işlemi 
+2024-12-26 16:05:20 INFO    eren adlı kullanıcı sisteme başarıyla kayıt oldu 
+2024-12-26 16:05:29 WARNING eren tarafından başarısız giriş yapma işlemi 
+2024-12-26 16:05:32 INFO    eren tarafından başarıyla giriş yapıldı 
+2024-12-26 16:11:31 INFO    Uygulama açıldı 
+2024-12-26 16:11:49 INFO    kerem tarafından başarıyla giriş yapıldı 
+2024-12-26 16:11:53 INFO    kerem adlı kullanıcı çıkış yaptı 
+2024-12-26 16:11:58 INFO    eren tarafından başarıyla giriş yapıldı 
+2024-12-26 16:12:01 INFO    eren adlı kullanıcı sistemden silindi 
+2024-12-26 16:30:46 INFO    Uygulama açıldı 
+2024-12-26 16:31:02 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-26 16:31:27 INFO    volkan adlı kullanıcı bireysel SavedFolders dizinine yedekleme yaptı 
+2024-12-26 16:32:32 INFO    volkan adlı kullanıcı 'Volkan's Team' adlı takımı oluşturdu  
+2024-12-26 16:32:57 INFO    volkan adlı kullanıcı 'kerem' 'yı, 'Volkan's Team' takımına davet etti  
+2024-12-26 16:33:07 INFO    volkan adlı kullanıcı 'Volkan's Team' adlı takıma 'deneme3.txt' adlı dosyayı ekledi 
+2024-12-26 16:33:19 INFO    volkan adlı kullanıcı 'Volkan's Team' adlı takımdan 'deneme3.txt' adlı dosyayı sildi 
+2024-12-26 16:33:22 INFO    volkan adlı kullanıcı çıkış yaptı 
+2024-12-26 16:36:22 INFO    Uygulama açıldı 
+2024-12-26 16:36:42 INFO    Uygulama açıldı 
+2024-12-26 16:36:48 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-26 16:36:55 INFO    volkan adlı kullanıcı çıkış yaptı 
+2024-12-26 16:37:10 INFO    Uygulama açıldı 
+2024-12-26 16:37:16 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-26 16:37:26 INFO    volkan adlı kullanıcı 'Team' adlı takımı oluşturdu  
+2024-12-26 16:37:52 INFO    volkan adlı kullanıcı kerem 'yı, Team takımına davet etti  
+2024-12-26 16:38:01 INFO    volkan adlı kullanıcı Team adlı takıma deneme.txt adlı dosyayı ekledi 
+2024-12-26 16:38:05 INFO    volkan adlı kullanıcı çıkış yaptı 
+2024-12-26 16:38:10 INFO    kerem tarafından başarıyla giriş yapıldı 
+2024-12-26 16:38:17 INFO    kerem adlı kullanıcı 'Team' adlı takıma katıldı  
+2024-12-26 16:38:30 INFO    kerem adlı kullanıcı Team adlı takımdan deneme.txt adlı dosyayı açtı 
+2024-12-26 16:38:37 INFO    kerem adlı kullanıcı Team adlı takımdan deneme.txt adlı dosyayı sildi 

@@ -12,7 +12,12 @@ public class Register {
 
     public Register (String username, String password) {
 
+        Log log = Log.getInstance();
+
         if (isIncorrect(username, password)) {
+
+            log.logger.warning("Başarısız kayıt olma işlemi");
+
             JOptionPane.showMessageDialog(null,"Girilen bilgiler hatalı \n " +
                             "Lütfen tekrar deneyiniz",
                     "Bir Hata Oluştu",JOptionPane.ERROR_MESSAGE);
@@ -22,6 +27,8 @@ public class Register {
 
             BaseUser customer = new Customer(username, password);
             customer.createFolder();
+
+            log.logger.info(customer.getUsername()+" adlı kullanıcı sisteme başarıyla kayıt oldu");
 
             JOptionPane.showMessageDialog(null,"Kullanıcı sisteme eklendi",
                     "Kullanıcı Oluşturuldu",JOptionPane.PLAIN_MESSAGE);

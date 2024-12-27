@@ -1,6 +1,7 @@
 package org.example.view;
 
 import org.example.managers.BaseUser;
+import org.example.managers.Log;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,6 +24,8 @@ public class AccountPanel extends JPanel implements IPanel {
     @Override
     public void refreshContent(JPanel mainCardPanel, CardLayout cardLayout) {
         this.removeAll();
+
+        Log log = Log.getInstance();
 
         this.setLayout(new BorderLayout());
 
@@ -104,6 +107,9 @@ public class AccountPanel extends JPanel implements IPanel {
                     JOptionPane.INFORMATION_MESSAGE,null,null,0);
 
             if(choice == 0) {
+
+                log.logger.info(customer.getUsername()+" adlı kullanıcı çıkış yaptı");
+
                 MainAppFrame.getInstance(customer).dispose();
                 MainAppFrame.resetInstance();
                 new LoginFrame();
@@ -131,6 +137,9 @@ public class AccountPanel extends JPanel implements IPanel {
                     JOptionPane.INFORMATION_MESSAGE,null,null,0);
 
             if(choice == 0) {
+
+                log.logger.info(customer.getUsername()+" adlı kullanıcı sistemden silindi");
+
                 customer.delThisUser();
 
                 MainAppFrame.getInstance(customer).dispose();

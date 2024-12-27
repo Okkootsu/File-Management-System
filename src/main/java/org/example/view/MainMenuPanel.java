@@ -1,9 +1,6 @@
 package org.example.view;
 
-import org.example.managers.BaseUser;
-import org.example.managers.CopyProcess;
-import org.example.managers.Customer;
-import org.example.managers.ProgressBarProcess;
+import org.example.managers.*;
 import org.example.utils.MysqlConnector;
 
 import javax.swing.*;
@@ -40,6 +37,8 @@ public class MainMenuPanel {
         @Override
         public void refreshContent(JPanel mainCardPanel, CardLayout cardLayout) {
             this.removeAll();
+
+            Log log = Log.getInstance();
 
             this.setLayout(new GridBagLayout());
 
@@ -126,6 +125,8 @@ public class MainMenuPanel {
                 } catch (InterruptedException ex) {
 
                 }
+
+                log.logger.info(customer.getUsername()+" adlı kullanıcı bireysel SavedFolders dizinine yedekleme yaptı");
             });
 
             copyBtnPanel.add(copyBtn);

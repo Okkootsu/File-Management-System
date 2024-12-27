@@ -1,6 +1,7 @@
 package org.example.view;
 
 import org.example.managers.Customer;
+import org.example.managers.Log;
 import org.example.utils.MysqlConnector;
 
 import javax.swing.*;
@@ -25,6 +26,8 @@ public class MainTeamPanel extends JPanel implements IPanel {
     @Override
     public void refreshContent(JPanel mainCardPanel, CardLayout cardLayout) {
         this.removeAll();
+
+        Log log = Log.getInstance();
 
         this.setLayout(new GridBagLayout());
 
@@ -72,6 +75,8 @@ public class MainTeamPanel extends JPanel implements IPanel {
                     mysqlConnector.setTeamName(customer.getUsername(), customer.getInv());
 
                     customer.setTeam(customer.getInv());
+
+                    log.logger.info(customer.getUsername() + " adlı kullanıcı '"+customer.getTeam()+"' adlı takıma katıldı ");
                 }
             }
         });
@@ -114,6 +119,8 @@ public class MainTeamPanel extends JPanel implements IPanel {
                     customer.setTeam(teamName);
 
                     customer.createTeamFolder();
+
+                    log.logger.info(customer.getUsername() + " adlı kullanıcı '"+customer.getTeam()+"' adlı takımı oluşturdu ");
 
                     JOptionPane.showMessageDialog(null,"Takım oluşturuldu",
                             "Bilgilendirme",JOptionPane.INFORMATION_MESSAGE);

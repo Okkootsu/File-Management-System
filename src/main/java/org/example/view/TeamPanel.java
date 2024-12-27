@@ -1,6 +1,7 @@
 package org.example.view;
 
 import org.example.managers.Customer;
+import org.example.managers.Log;
 import org.example.utils.MysqlConnector;
 
 import javax.swing.*;
@@ -31,6 +32,8 @@ public class TeamPanel extends JPanel implements IPanel {
     @Override
     public void refreshContent(JPanel mainCardPanel, CardLayout cardLayout) {
         this.removeAll();
+
+        Log log = Log.getInstance();
 
         this.setLayout(new BorderLayout());
 
@@ -111,6 +114,9 @@ public class TeamPanel extends JPanel implements IPanel {
                 File selectedFile = upload.getSelectedFile();
 
                 customer.addToTeamWorkPlace(selectedFile);
+
+                log.logger.info(customer.getUsername() + " adlı kullanıcı "+customer.getTeam()+" adlı takıma" +
+                        " "+selectedFile.getName()+" adlı dosyayı ekledi");
             }
         });
         gbc.gridx = 1;  gbc.gridy = 0;  gbc.gridwidth = 1;
@@ -129,6 +135,8 @@ public class TeamPanel extends JPanel implements IPanel {
 
                 fileOpen(selectedFile);
 
+                log.logger.info(customer.getUsername() + " adlı kullanıcı "+customer.getTeam()+" adlı takımdan" +
+                        " "+selectedFile.getName()+" adlı dosyayı açtı");
             }
         });
         gbc.gridx = 2;  gbc.gridy = 0;  gbc.gridwidth = 1;
@@ -151,6 +159,9 @@ public class TeamPanel extends JPanel implements IPanel {
                     File selectedFile = del.getSelectedFile();
                     try {
                         Files.delete(selectedFile.toPath());
+
+                        log.logger.info(customer.getUsername() + " adlı kullanıcı "+customer.getTeam()+" adlı takımdan" +
+                                " "+selectedFile.getName()+" adlı dosyayı sildi");
                     } catch (IOException ex) {
                         JOptionPane.showMessageDialog(null,"Hata Kodu:"+ex.getMessage(),
                                 "Bir Hata Oluştu (fileDelete)",JOptionPane.ERROR_MESSAGE);
@@ -257,6 +268,8 @@ public class TeamPanel extends JPanel implements IPanel {
 
     private JPanel cell(String username) {
 
+        Log log = Log.getInstance();
+
         JPanel cellPanel = new JPanel();
         cellPanel.setLayout(new GridLayout(1,2));
 
@@ -278,6 +291,8 @@ public class TeamPanel extends JPanel implements IPanel {
         sendBtn.setFocusable(false);
         sendBtn.addActionListener(e -> {
             customer.sendInv(username);
+
+            log.logger.info(customer.getUsername() + " adlı kullanıcı "+username+" 'yı, "+customer.getTeam()+" takımına davet etti ");
 
             JOptionPane.showMessageDialog(null,"Davet Gönderildi",
                     "Bilgilendirme",JOptionPane.INFORMATION_MESSAGE);
