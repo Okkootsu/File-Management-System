@@ -30,3 +30,44 @@
 2024-12-26 16:38:17 INFO    kerem adlı kullanıcı 'Team' adlı takıma katıldı  
 2024-12-26 16:38:30 INFO    kerem adlı kullanıcı Team adlı takımdan deneme.txt adlı dosyayı açtı 
 2024-12-26 16:38:37 INFO    kerem adlı kullanıcı Team adlı takımdan deneme.txt adlı dosyayı sildi 
+2024-12-27 12:48:50 INFO    Uygulama açıldı 
+2024-12-27 12:48:58 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-27 13:21:30 INFO    Uygulama açıldı 
+2024-12-27 13:21:35 INFO    kerem tarafından başarıyla giriş yapıldı 
+2024-12-27 13:26:46 INFO    Uygulama açıldı 
+2024-12-27 13:26:51 INFO    kerem tarafından başarıyla giriş yapıldı 
+2024-12-27 13:28:33 INFO    Uygulama açıldı 
+2024-12-27 13:28:40 INFO    kerem tarafından başarıyla giriş yapıldı 
+2024-12-27 13:31:48 INFO    Uygulama açıldı 
+2024-12-27 13:31:55 INFO    kerem tarafından başarıyla giriş yapıldı 
+2024-12-27 13:33:10 INFO    Uygulama açıldı 
+2024-12-27 13:33:17 INFO    kerem tarafından başarıyla giriş yapıldı 
+2024-12-27 14:15:10 INFO    Uygulama açıldı 
+2024-12-27 14:15:16 INFO    kerem tarafından başarıyla giriş yapıldı 
+2024-12-27 14:46:33 INFO    Uygulama açıldı 
+2024-12-27 14:46:43 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-27 14:46:47 INFO    volkan tarafından kerem adlı kişiye takım isteği gönderildi 
+2024-12-27 14:49:24 INFO    Uygulama açıldı 
+2024-12-27 14:49:29 INFO    kerem tarafından başarıyla giriş yapıldı 
+2024-12-27 14:49:39 INFO    kerem tarafından volkan adlı kişiye takım isteği gönderildi 
+2024-12-27 14:50:19 INFO    Uygulama açıldı 
+2024-12-27 14:50:25 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-27 14:50:35 INFO    volkan tarafından kerem adlı kişiye takım isteği gönderildi 
+2024-12-27 15:04:17 INFO    Uygulama açıldı 
+2024-12-27 15:04:22 INFO    kerem tarafından başarıyla giriş yapıldı 
+2024-12-27 15:04:31 INFO    kerem tarafından volkan adlı kişi takım arkadaşı olarak eklendi 
+2024-12-27 16:12:41 INFO    Uygulama açıldı 
+2024-12-27 16:12:47 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-27 16:12:57 INFO    volkan tarafından kerem adlı kişiye takım isteği gönderildi 
+2024-12-27 16:13:02 INFO    volkan adlı kullanıcı çıkış yaptı 
+2024-12-27 16:13:06 INFO    kerem tarafından başarıyla giriş yapıldı 
+2024-12-27 16:13:41 INFO    kerem tarafından volkan adlı kişi takım arkadaşı olarak eklendi 
+2024-12-27 16:16:04 INFO    Uygulama açıldı 
+2024-12-27 16:16:10 INFO    eren adlı kullanıcı sisteme başarıyla kayıt oldu 
+2024-12-27 16:16:35 INFO    eren tarafından başarıyla giriş yapıldı 
+2024-12-27 16:16:44 INFO    eren tarafından volkan adlı kişiye takım isteği gönderildi 
+2024-12-27 16:16:52 INFO    eren adlı kullanıcı çıkış yaptı 
+2024-12-27 16:16:57 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-27 16:17:04 INFO    volkan tarafından eren adlı kişi takım arkadaşı olarak eklendi 
+2024-12-27 16:17:32 INFO    volkan adlı kullanıcı çıkış yaptı 
+2024-12-27 16:17:36 INFO    kerem tarafından başarıyla giriş yapıldı 

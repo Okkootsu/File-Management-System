@@ -18,12 +18,11 @@ public class Customer extends BaseUser{
     private String username;
     private String password;
     private final String role = "customer";
-    private String team;
+
 
     public Customer (String username, String password) {
         setUsername(username);
         setPassword(password);
-        setTeam(getTeamFromDB());
     }
 
     @Override
@@ -34,10 +33,6 @@ public class Customer extends BaseUser{
     @Override
     public String getPassword() {
         return password;
-    }
-
-    public String getTeam() {
-        return team;
     }
 
     @Override
@@ -55,44 +50,10 @@ public class Customer extends BaseUser{
         this.password = password;
     }
 
-    public void setTeam(String team) {
-        this.team = team;
-    }
-
     @Override
     public int getId() {
         MysqlConnector mysqlConnector = new MysqlConnector();
         return mysqlConnector.getUserId(getUsername());
-    }
-
-    private String getTeamFromDB() {
-        MysqlConnector mysqlConnector = new MysqlConnector();
-        ResultSet resultSet = mysqlConnector.getInfo(getUsername());
-
-        try {
-            resultSet.next();
-            return resultSet.getString("team");
-        } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
-                    "Bir Hata Oluştu (getTeamFromDB)",JOptionPane.ERROR_MESSAGE);
-            return null;
-        }
-    }
-
-    public String getInv() {
-        MysqlConnector mysqlConnector = new MysqlConnector();
-
-        try {
-            ResultSet resultSet = mysqlConnector.getInfo(getUsername());
-            resultSet.next();
-
-            return resultSet.getString("invite_from");
-
-        } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
-                    "Bir Hata Oluştu (getTeamFromDB)",JOptionPane.ERROR_MESSAGE);
-            return "";
-        }
     }
 
     @Override
@@ -109,11 +70,6 @@ public class Customer extends BaseUser{
 
         MysqlConnector mysqlConnector = new MysqlConnector();
         mysqlConnector.delUser(getUsername());
-    }
-
-    public void sendInv(String sendTo) {
-        MysqlConnector mysqlConnector = new MysqlConnector();
-        mysqlConnector.sendInvite(getTeam(), sendTo);
     }
 
     @Override
@@ -164,6 +120,17 @@ public class Customer extends BaseUser{
         }
     }
 
+    public void sendInv(String invited) {
+        MysqlConnector mysqlConnector = new MysqlConnector();
+        mysqlConnector.sendInvite(getUsername(), invited);
+    }
+
+    public void addFriend(String friendName, int inviteId) {
+        MysqlConnector mysqlConnector = new MysqlConnector();
+        mysqlConnector.addFriend(getUsername(), friendName, inviteId);
+    }
+
+    /*
     public void createTeamFolder() {
         try {
 
@@ -198,6 +165,7 @@ public class Customer extends BaseUser{
                     "Bir Hata Oluştu (addToWorkPlace)",JOptionPane.ERROR_MESSAGE);
         }
     }
+    */
 
     // Yetkisiz erişim
     @Override

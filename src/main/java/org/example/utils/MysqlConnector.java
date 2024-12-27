@@ -34,8 +34,8 @@ public class MysqlConnector {
             Statement statement = connection.createStatement();
 
             // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
-            String query = "INSERT INTO users(user_name, password, role, team, invite_from)" +
-                    "VALUES('"+username+"' , '"+password+"' , 'customer' , 'None' , 'None' )";
+            String query = "INSERT INTO users(user_name, password, role)" +
+                    "VALUES('"+username+"' , '"+password+"' , 'customer' )";
 
             statement.execute(query);
 
@@ -143,47 +143,47 @@ public class MysqlConnector {
         }
     }
 
-    public ResultSet getAllTeams() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+//    public ResultSet getAllTeams() {
+//        try {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//
+//            Connection connection = DriverManager.getConnection(getSqlConnection(),getSqlUsername(),getSqlPassword());
+//
+//            Statement statement = connection.createStatement();
+//
+//            // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
+//            String query = "SELECT team FROM users " ;
+//
+//            return statement.executeQuery(query);
+//
+//        } catch (Exception exception) {
+//            JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
+//                    "Bir Hata Oluştu (getUsers)",JOptionPane.ERROR_MESSAGE);
+//
+//            return null;
+//        }
+//    }
 
-            Connection connection = DriverManager.getConnection(getSqlConnection(),getSqlUsername(),getSqlPassword());
-
-            Statement statement = connection.createStatement();
-
-            // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
-            String query = "SELECT team FROM users " ;
-
-            return statement.executeQuery(query);
-
-        } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
-                    "Bir Hata Oluştu (getUsers)",JOptionPane.ERROR_MESSAGE);
-
-            return null;
-        }
-    }
-
-    public void setTeamName(String username ,String teamName){
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-
-            Connection connection = DriverManager.getConnection(getSqlConnection(),getSqlUsername(),getSqlPassword());
-
-            Statement statement = connection.createStatement();
-
-            // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
-            String query = "UPDATE users " +
-                    "SET team = '"+teamName+"' " +
-                    "WHERE user_name = '"+username+"' " ;
-
-            statement.execute(query);
-
-        } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
-                    "Bir Hata Oluştu (setTeamName)",JOptionPane.ERROR_MESSAGE);
-        }
-    }
+//    public void setTeamName(String username ,String teamName){
+//        try {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//
+//            Connection connection = DriverManager.getConnection(getSqlConnection(),getSqlUsername(),getSqlPassword());
+//
+//            Statement statement = connection.createStatement();
+//
+//            // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
+//            String query = "UPDATE users " +
+//                    "SET team = '"+teamName+"' " +
+//                    "WHERE user_name = '"+username+"' " ;
+//
+//            statement.execute(query);
+//
+//        } catch (Exception exception) {
+//            JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
+//                    "Bir Hata Oluştu (setTeamName)",JOptionPane.ERROR_MESSAGE);
+//        }
+//    }
 
     public void sendInvite(String inviter, String invited) {
         try {
@@ -194,15 +194,92 @@ public class MysqlConnector {
             Statement statement = connection.createStatement();
 
             // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
-            String query = "UPDATE users " +
-                    "SET invite_from = '"+inviter+"' " +
-                    "WHERE user_name = '"+invited+"' " ;
+            String query = "INSERT INTO friend_requests(user_name, invite_from)" +
+                    "VALUES('"+invited+"' , '"+inviter+"' )";
 
             statement.execute(query);
 
         } catch (Exception exception) {
             JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
                     "Bir Hata Oluştu (sendInvite)",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void addFriend(String username, String friendName, int inviteId) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = DriverManager.getConnection(getSqlConnection(),getSqlUsername(),getSqlPassword());
+
+            Statement statement = connection.createStatement();
+
+            // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
+            String query = "INSERT INTO friends(user_name, friend) " +
+                    "VALUES('"+username+"' , '"+friendName+"' )";
+
+            statement.execute(query);
+
+            // Daveti gönderen içinde aynı şeyi yapıyoruz
+            query = "INSERT INTO friends(user_name, friend) " +
+                    "VALUES('"+friendName+"' , '"+username+"' )";
+
+            statement.execute(query);
+
+            // Ve o daveti siliyoruz
+            query = "DELETE FROM friend_requests " +
+                    "WHERE inv_id = "+inviteId;
+
+            statement.execute(query);
+
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
+                    "Bir Hata Oluştu (addFriend)",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public ResultSet getFriendRequests(String from) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = DriverManager.getConnection(getSqlConnection(),getSqlUsername(),getSqlPassword());
+
+            Statement statement = connection.createStatement();
+
+            // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
+            String query = "SELECT * FROM friend_requests " +
+                    "WHERE user_name = '"+from+"' ";
+
+
+            return statement.executeQuery(query);
+
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
+                    "Bir Hata Oluştu (getFriendRequests)",JOptionPane.ERROR_MESSAGE);
+
+            return null;
+        }
+    }
+
+    public ResultSet getFriends(String from) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = DriverManager.getConnection(getSqlConnection(),getSqlUsername(),getSqlPassword());
+
+            Statement statement = connection.createStatement();
+
+            // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
+            String query = "SELECT friend FROM friends " +
+                    "WHERE user_name = '"+from+"' ";
+
+
+            return statement.executeQuery(query);
+
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
+                    "Bir Hata Oluştu (getFriends)",JOptionPane.ERROR_MESSAGE);
+
+            return null;
         }
     }
 

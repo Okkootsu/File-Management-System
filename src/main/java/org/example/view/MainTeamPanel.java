@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.sql.ResultSet;
 
+/*
 public class MainTeamPanel extends JPanel implements IPanel {
 
     Customer customer;
@@ -170,4 +171,4 @@ public class MainTeamPanel extends JPanel implements IPanel {
             return true;
         }
     }
-}
+} */

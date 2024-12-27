@@ -82,11 +82,13 @@ public class MainAppFrame extends JFrame {
 
             MainMenuPanel.MainCustomerPanel mainMenuPanel = new MainMenuPanel.MainCustomerPanel(mainCardPanel, cardLayout, customer);
             AccountPanel accountPanel = new AccountPanel(mainCardPanel, cardLayout, customer);
-            MainTeamPanel teamPanel = new MainTeamPanel(mainCardPanel, cardLayout, customer);
+//            MainTeamPanel teamPanel = new MainTeamPanel(mainCardPanel, cardLayout, customer);
+            NewTeamPanel newTeamPanel = new NewTeamPanel(mainCardPanel, cardLayout, customer);
 
             mainCardPanel.add(mainMenuPanel, "Main Menu");
             mainCardPanel.add(accountPanel, "My Account");
-            mainCardPanel.add(teamPanel, "Main Team");
+//            mainCardPanel.add(teamPanel, "Main Team");
+            mainCardPanel.add(newTeamPanel, "New Team");
 
             // Center
 
@@ -123,9 +125,9 @@ public class MainAppFrame extends JFrame {
             teamBtn.setPreferredSize(buttonSize);
 
             teamBtn.addActionListener(e -> {
-                teamPanel.refreshContent(mainCardPanel, cardLayout);
+                newTeamPanel.refreshContent(mainCardPanel, cardLayout);
 
-                cardLayout.show(mainCardPanel, "Main Team");
+                cardLayout.show(mainCardPanel, "New Team");
             });
 
             leftPanel.add(teamBtn);

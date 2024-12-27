@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 
 import static org.example.managers.FileManager.fileOpen;
 
+/*
 public class TeamPanel extends JPanel implements IPanel {
 
     private Customer customer;
@@ -304,4 +305,4 @@ public class TeamPanel extends JPanel implements IPanel {
 
         return cellPanel;
     }
-}
+} */
