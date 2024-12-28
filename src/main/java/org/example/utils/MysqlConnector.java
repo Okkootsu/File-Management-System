@@ -359,4 +359,87 @@ public class MysqlConnector {
         }
     }
 
+    public void createPasswordRequest(String username, String password) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = DriverManager.getConnection(getSqlConnection(),getSqlUsername(),getSqlPassword());
+
+            Statement statement = connection.createStatement();
+
+            // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
+            String query = "INSERT INTO password_requests(user_name, new_password)" +
+                    "VALUES('"+username+"' , '"+password+"' )";
+
+            statement.execute(query);
+
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
+                    "Bir Hata Oluştu (createPasswordRequest)",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public ResultSet getPasswordRequests(String username) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = DriverManager.getConnection(getSqlConnection(),getSqlUsername(),getSqlPassword());
+
+            Statement statement = connection.createStatement();
+
+            // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
+            String query = " SELECT * FROM password_requests " +
+                    " WHERE user_name = '"+username+"' ";
+
+            return statement.executeQuery(query);
+
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
+                    "Bir Hata Oluştu (createPasswordRequest)",JOptionPane.ERROR_MESSAGE);
+
+            return null;
+        }
+    }
+
+    public void updatePassword(String username, String newPassword) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = DriverManager.getConnection(getSqlConnection(),getSqlUsername(),getSqlPassword());
+
+            Statement statement = connection.createStatement();
+
+            // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
+            String query = "UPDATE users " +
+                    "SET password = '"+newPassword+"' " +
+                    "WHERE user_name = '"+username+"' ";
+
+            statement.execute(query);
+
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
+                    "Bir Hata Oluştu (createPasswordRequest)",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void deletePasswordRequest(String username) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = DriverManager.getConnection(getSqlConnection(),getSqlUsername(),getSqlPassword());
+
+            Statement statement = connection.createStatement();
+
+            // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
+            String query = "DELETE FROM password_requests " +
+                    "WHERE user_name = '"+username+"' ";
+
+            statement.execute(query);
+
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
+                    "Bir Hata Oluştu (createPasswordRequest)",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
 }

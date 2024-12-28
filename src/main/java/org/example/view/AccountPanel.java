@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.sql.ResultSet;
 
+import static org.example.utils.PasswordHashing.hashPassword;
+
 public class AccountPanel extends JPanel implements IPanel {
 
     BaseUser customer;
@@ -220,7 +222,22 @@ public class AccountPanel extends JPanel implements IPanel {
         JButton passwordBtn = new JButton("Şifreyi Değiştir");
         passwordBtn.setFocusable(false);
         passwordBtn.addActionListener(e -> {
+            String newPassword = JOptionPane.showInputDialog("Yeni şifre:");
 
+            if(isValidPassword(newPassword)) {
+                customer.createPassRequest(hashPassword(newPassword));
+
+                log.logger.info(customer.getUsername() + " adlı kullanıcı şifre değiştirme talebinde bulundu");
+
+                JOptionPane.showMessageDialog(null,"Şifre değiştirme talebiniz gönderilmiştir",
+                        "Bilgilendirme",JOptionPane.INFORMATION_MESSAGE);
+
+            } else {
+                log.logger.warning(customer.getUsername() + " tarafından başarısız şifre değiştirme talebi");
+
+                JOptionPane.showMessageDialog(null,"Bu şifre kullanılamaz",
+                        "Uyarı",JOptionPane.INFORMATION_MESSAGE);
+            }
         });
         gbc.gridx = 1;  gbc.gridy = 2;
         frame.add(passwordBtn, gbc);
@@ -246,6 +263,13 @@ public class AccountPanel extends JPanel implements IPanel {
         } catch (Exception e) {
             return false;
         }
+
+        return true;
+    }
+
+    private static boolean isValidPassword(String password) {
+        if(password.isEmpty()) { return false; }
+        if(password.length() > 45) { return false; }
 
         return true;
     }

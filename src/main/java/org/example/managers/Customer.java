@@ -200,6 +200,12 @@ public class Customer extends BaseUser{
         }
     }
 
+    @Override
+    public void createPassRequest(String newPassword) {
+        MysqlConnector mysqlConnector = new MysqlConnector();
+        mysqlConnector.createPasswordRequest(getUsername(), newPassword);
+    }
+
 
     // Yetkisiz erişim
     @Override

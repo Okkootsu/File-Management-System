@@ -153,3 +153,31 @@
 2024-12-28 12:26:54 INFO    Uygulama açıldı 
 2024-12-28 12:27:01 INFO    furkan tarafından başarıyla giriş yapıldı 
 2024-12-28 12:27:23 INFO    furkan adlı kullanıcı sistemden silindi 
+2024-12-28 16:35:46 INFO    Uygulama açıldı 
+2024-12-28 16:35:53 INFO    volkan adlı kullanıcı sisteme başarıyla kayıt oldu 
+2024-12-28 16:36:00 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-28 16:36:04 INFO    volkan adlı kullanıcı çıkış yaptı 
+2024-12-28 16:36:09 WARNING furkan tarafından başarısız giriş yapma işlemi 
+2024-12-28 16:36:16 INFO    furkan adlı kullanıcı sisteme başarıyla kayıt oldu 
+2024-12-28 16:36:20 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-28 16:36:30 INFO    Uygulama açıldı 
+2024-12-28 16:36:40 INFO    admin tarafından başarıyla giriş yapıldı 
+2024-12-28 16:50:57 INFO    Uygulama açıldı 
+2024-12-28 16:51:05 INFO    admin tarafından başarıyla giriş yapıldı 
+2024-12-28 17:19:39 INFO    Uygulama açıldı 
+2024-12-28 17:19:45 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-28 17:20:05 WARNING volkan tarafından başarısız şifre değiştirme talebi 
+2024-12-28 17:20:22 INFO    volkan adlı kullanıcı şifre değiştirme talebinde bulundu 
+2024-12-28 17:20:27 INFO    volkan adlı kullanıcı çıkış yaptı 
+2024-12-28 17:20:31 INFO    admin tarafından başarıyla giriş yapıldı 
+2024-12-28 18:11:39 INFO    Uygulama açıldı 
+2024-12-28 18:11:42 WARNING admin tarafından başarısız giriş yapma işlemi 
+2024-12-28 18:11:45 INFO    admin tarafından başarıyla giriş yapıldı 
+2024-12-28 18:12:50 INFO    Uygulama açıldı 
+2024-12-28 18:12:56 INFO    admin tarafından başarıyla giriş yapıldı 
+2024-12-28 18:14:54 INFO    Uygulama açıldı 
+2024-12-28 18:15:00 INFO    admin tarafından başarıyla giriş yapıldı 
+2024-12-28 18:15:20 INFO    volkan adlı kullanıcının şifre değiştirme talebi kabul edildi 
+2024-12-28 18:15:27 INFO    admin adlı kullanıcı çıkış yaptı 
+2024-12-28 18:15:34 WARNING volkan tarafından başarısız giriş yapma işlemi 
+2024-12-28 18:15:36 INFO    volkan tarafından başarıyla giriş yapıldı 

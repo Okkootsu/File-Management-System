@@ -169,9 +169,9 @@ public class MainAppFrame extends JFrame {
 
 
             header.setBackground(new Color(34, 40, 49));
-            westContainer.setBackground(new Color(57, 62, 70));
-            eastContainer.setBackground(new Color(57, 62, 70));
-            footer.setBackground(new Color( 57, 62, 70));
+            westContainer.setBackground(new Color(155, 164, 180));
+            eastContainer.setBackground(new Color(155, 164, 180));
+            footer.setBackground(new Color(155, 164, 180));
 
 
             header.setPreferredSize(new Dimension(100,70));

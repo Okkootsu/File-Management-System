@@ -8,6 +8,7 @@ import java.awt.*;
 import java.io.File;
 import java.nio.file.Path;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import static org.example.managers.FileManager.fileCopy;
 import static org.example.managers.FileManager.fileOpen;
@@ -203,10 +204,10 @@ public class MainMenuPanel {
             JPanel footer = new JPanel();
 
 
-            header.setBackground(new Color(57, 62, 70));
-            westContainer.setBackground(new Color(57, 62, 70));
-            eastContainer.setBackground(new Color(57, 62, 70));
-            footer.setBackground(new Color( 57, 62, 70));
+            header.setBackground(new Color(155, 164, 180));
+            westContainer.setBackground(new Color(155, 164, 180));
+            eastContainer.setBackground(new Color(155, 164, 180));
+            footer.setBackground(new Color(155, 164, 180));
 
 
             header.setOpaque(true);
@@ -237,7 +238,7 @@ public class MainMenuPanel {
 
         private static JPanel createTable() {
             JPanel table = new JPanel();
-            table.setBackground(new Color(66, 69, 74));
+            table.setBackground(new Color(253, 250, 217));
 
             table.setLayout(new GridBagLayout());
 
@@ -324,6 +325,9 @@ public class MainMenuPanel {
             gbc.fill = GridBagConstraints.BOTH;
             gbc.insets = new Insets(10,10,10,10);
 
+            // Boşluklar
+
+
             // İçerik
 
             Font titleFont = new Font("Comic Sans",Font.BOLD,12);
@@ -338,7 +342,7 @@ public class MainMenuPanel {
             JLabel user = new JLabel(username);
             user.setFont(basicFont);
 
-            gbc.gridx = 1;  gbc.gridy = 0; gbc.gridwidth = 1;
+            gbc.gridx = 1;  gbc.gridy = 0; gbc.gridwidth = 2;
             frame.add(user, gbc);
 
 
@@ -358,7 +362,7 @@ public class MainMenuPanel {
                 JLabel pass = new JLabel(hashedP);
                 pass.setFont(basicFont);
 
-                gbc.gridx = 1;  gbc.gridy = 1; gbc.gridwidth = 1;
+                gbc.gridx = 1;  gbc.gridy = 1; gbc.gridwidth = 2;
                 frame.add(pass, gbc);
 
             } catch (Exception exception) {
@@ -376,14 +380,23 @@ public class MainMenuPanel {
             JLabel maxFile = new JLabel("10");
             maxFile.setFont(basicFont);
 
-            gbc.gridx = 1;  gbc.gridy = 2; gbc.gridwidth = 1;
+            gbc.gridx = 1;  gbc.gridy = 2; gbc.gridwidth = 2;
             frame.add(maxFile, gbc);
 
 
             JButton documentsBtn = new JButton("Dökümanları");
             documentsBtn.setFocusable(false);
             documentsBtn.addActionListener(e -> {
+                JFileChooser open = new JFileChooser();
+                open.setCurrentDirectory(new File("src/SystemFolders/folders/OriginalFolders/" + username));
+                int choice = open.showOpenDialog(null);
 
+                if (choice == JFileChooser.APPROVE_OPTION) {
+                    File selectedFile = open.getSelectedFile();
+
+                    fileOpen(selectedFile);
+
+                }
             });
 
             gbc.gridx = 0;  gbc.gridy = 3; gbc.gridwidth = 1;
@@ -398,6 +411,108 @@ public class MainMenuPanel {
             gbc.gridx = 1;  gbc.gridy = 3; gbc.gridwidth = 1;
             frame.add(logsBtn, gbc);
 
+            JButton requestsBtn = new JButton("İstekleri");
+            requestsBtn.setFocusable(false);
+            requestsBtn.addActionListener(e -> {
+                requests(username);
+            });
+
+            gbc.gridx = 2;  gbc.gridy = 3; gbc.gridwidth = 1;
+            frame.add(requestsBtn, gbc);
+
+        }
+
+        private static void requests(String username) {
+
+            Log log = Log.getInstance();
+
+            JFrame frame = new JFrame();
+            frame.setVisible(true);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.setTitle("Parola değiştirme talebi");
+            frame.setBackground(new Color(203, 220, 235));
+            frame.setSize(450,250);
+            frame.setLocationRelativeTo(null);
+            frame.setLayout(new GridBagLayout());
+
+            GridBagConstraints gbc = new GridBagConstraints();
+
+            gbc.weightx = 1.0;
+            gbc.weighty = 1.0;
+            gbc.fill = GridBagConstraints.BOTH;
+            gbc.insets = new Insets(10,10,10,10);
+
+
+            // boşluk
+            gbc.gridx = 0;  gbc.gridy = 0; gbc.gridwidth = 1;
+            frame.add(new JPanel(), gbc);
+
+            // istek
+            MysqlConnector mysqlConnector = new MysqlConnector();
+            ResultSet resultSet = mysqlConnector.getPasswordRequests(username);
+
+            try {
+                if(resultSet.next()) {
+                    JPanel panel = new JPanel();
+                    panel.setLayout(new GridLayout(1,2));
+
+                    JPanel leftPanel = new JPanel();
+                    leftPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
+
+                    JLabel usernameLabel = new JLabel(username);
+                    usernameLabel.setFont(new Font("Arial",Font.BOLD,20));
+                    leftPanel.add(usernameLabel);
+
+                    JPanel rightPanel = new JPanel();
+                    rightPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+
+                    JButton acceptBtn = new JButton("Kabul Et");
+                    acceptBtn.setFocusable(false);
+                    acceptBtn.addActionListener(e -> {
+                        try {
+                            mysqlConnector.updatePassword(username, resultSet.getString("new_password"));
+
+                            log.logger.info(username+" adlı kullanıcının şifre değiştirme talebi kabul edildi");
+
+                            JOptionPane.showMessageDialog(null,"Onay verildi",
+                                    "Bilgilendirme",JOptionPane.INFORMATION_MESSAGE);
+
+                            mysqlConnector.deletePasswordRequest(username);
+
+                            Thread.sleep(1000);
+
+                            frame.dispose();
+
+
+                        } catch (Exception ex) {
+                            JOptionPane.showMessageDialog(null,"Hata Kodu:"+ex.getMessage(),
+                                    "Bir Hata Oluştu (kabul et)",JOptionPane.ERROR_MESSAGE);
+                        }
+                    });
+                    rightPanel.add(acceptBtn);
+
+                    panel.add(leftPanel);
+                    panel.add(rightPanel);
+
+                    gbc.gridx = 0;  gbc.gridy = 1; gbc.gridwidth = 1;
+                    frame.add(panel, gbc);
+
+                    gbc.gridx = 0;  gbc.gridy = 2; gbc.gridwidth = 1;
+                    frame.add(new JPanel(), gbc);
+
+                } else {
+                    JLabel infoLabel = new JLabel("Bu kullanıcının herhangi bir talebi yok");
+                    infoLabel.setFont(new Font("Arial",Font.BOLD,20));
+                    gbc.gridx = 0;  gbc.gridy = 1; gbc.gridwidth = 1;
+                    frame.add(infoLabel, gbc);
+
+                    gbc.gridx = 0;  gbc.gridy = 2; gbc.gridwidth = 1;
+                    frame.add(new JPanel(), gbc);
+                }
+            } catch (Exception exception) {
+                JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
+                        "Bir Hata Oluştu (Requests)",JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 }

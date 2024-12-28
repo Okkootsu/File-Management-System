@@ -66,6 +66,11 @@ public class Admin extends BaseUser{
         mysqlConnector.delUser(getUsername());
     }
 
+//    public void getRequests(String from) {
+//        MysqlConnector mysqlConnector = new MysqlConnector();
+//        ResultSet resultSet =  mysqlConnector.getPasswordRequests(from);
+//    }
+
     @Override
     public void changeUsername(String newName) {
 
@@ -78,6 +83,11 @@ public class Admin extends BaseUser{
 
     @Override
     public void renameTeamFolders(String newName) {
+
+    }
+
+    @Override
+    public void createPassRequest(String newPassword) {
 
     }
 
