@@ -14,6 +14,9 @@ public abstract class BaseUser {
     public abstract void setPassword(String password);
     public abstract int getId();
     public abstract void delThisUser();
+    public abstract void changeUsername(String newName);
+    public abstract void renameTheFolders(String newName);
+    public abstract void renameTeamFolders(String newName);
 
     // Dosya işlemleri
     public abstract void createFolder();

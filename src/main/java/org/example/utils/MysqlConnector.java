@@ -67,6 +67,54 @@ public class MysqlConnector {
         return null;
     }
 
+    public void changeName(String oldName, String newName) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = DriverManager.getConnection(getSqlConnection(),getSqlUsername(),getSqlPassword());
+
+            Statement statement = connection.createStatement();
+
+            // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
+            String query = "UPDATE users " +
+                    "SET user_name = '"+newName+"' " +
+                    "WHERE user_name = '"+oldName+"' ";
+
+            statement.execute(query);
+
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(null,"Hata Kodu: "+exception.getMessage(),
+                    "Bir Hata Oluştu",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void updateFriends(String oldName, String newName) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = DriverManager.getConnection(getSqlConnection(),getSqlUsername(),getSqlPassword());
+
+            Statement statement = connection.createStatement();
+
+            // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
+            String query = "UPDATE friend_requests " +
+                    "SET user_name = CASE WHEN user_name = '"+oldName+"' THEN '"+newName+"' ELSE user_name END, " +
+                    "invite_from = CASE WHEN invite_from = '"+oldName+"' THEN '"+newName+"' ELSE invite_from END ";
+
+            statement.execute(query);
+
+            query = "UPDATE friends " +
+                    "SET user_name = CASE WHEN user_name = '"+oldName+"' THEN '"+newName+"' ELSE user_name END, " +
+                    "friend = CASE WHEN friend = '"+oldName+"' THEN '"+newName+"' ELSE friend END ";
+
+            statement.execute(query);
+
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(null,"Hata Kodu: "+exception.getMessage(),
+                    "Bir Hata Oluştu(updateFriends)",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     public int getUserId(String username) {
         try {
             ResultSet resultSet = getInfo(username);
@@ -94,6 +142,34 @@ public class MysqlConnector {
             // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
             String query = "DELETE FROM users " +
                     "WHERE user_name = '"+username+"' ";
+
+            statement.execute(query);
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,"Hata Kodu:"+e.getMessage(),
+                    "Bir Hata Oluştu (delThisUser)",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void delFromFriends(String username) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = DriverManager.getConnection(getSqlConnection(),getSqlUsername(),getSqlPassword());
+
+            Statement statement = connection.createStatement();
+
+            // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
+            // Friend request'te sil
+            String query = "DELETE FROM friend_requests " +
+                    "WHERE user_name = '"+username+"' " +
+                    "OR invite_from = '"+username+"' ";
+
+            statement.execute(query);
+
+            query = "DELETE FROM friends " +
+                    "WHERE user_name = '"+username+"' " +
+                    "OR friend = '"+username+"' ";
 
             statement.execute(query);
 

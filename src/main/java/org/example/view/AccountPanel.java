@@ -2,9 +2,11 @@ package org.example.view;
 
 import org.example.managers.BaseUser;
 import org.example.managers.Log;
+import org.example.utils.MysqlConnector;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.ResultSet;
 
 public class AccountPanel extends JPanel implements IPanel {
 
@@ -122,7 +124,7 @@ public class AccountPanel extends JPanel implements IPanel {
         JButton updateBtn = new JButton("Bilgileri Güncelle");
         updateBtn.setFocusable(false);
         updateBtn.addActionListener(e -> {
-
+            changes();
         });
 
         gbc.gridx = 1; gbc.gridy = 3; gbc.gridwidth = 1;
@@ -157,5 +159,94 @@ public class AccountPanel extends JPanel implements IPanel {
 
         this.revalidate();
         this.repaint();
+    }
+
+    private void changes() {
+
+        Log log = Log.getInstance();
+
+        JFrame frame = new JFrame("Bilgileri Güncelle");
+        frame.setLocation(500,250);
+        frame.setSize(500,350);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setLayout(new GridBagLayout());
+
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        gbc.weightx = 1.0; // Yatayda boş alan paylaşımı
+        gbc.weighty = 1.0; // Dikeyde boş alan paylaşımı
+        gbc.fill = GridBagConstraints.BOTH; // Hem yatayda hem dikeyde genişle
+        gbc.insets = new Insets(10, 10, 10, 10); // Boşlukları sıfırla
+
+        // Üst boşluk
+        gbc.gridx = 0;  gbc.gridy = 0;
+        frame.add(new JPanel(), gbc);
+
+        gbc.gridx = 2;  gbc.gridy = 0;
+        frame.add(new JPanel(), gbc);
+
+        // içerik
+        JButton usernameBtn = new JButton("Kullanıcı Adını Değiştir");
+        usernameBtn.setFocusable(false);
+        usernameBtn.addActionListener(e -> {
+            String newName = JOptionPane.showInputDialog("Yeni kullanıcı adı:");
+
+            if(isValid(newName)) {
+                customer.renameTheFolders(newName);
+
+                MysqlConnector mysqlConnector = new MysqlConnector();
+                mysqlConnector.updateFriends(customer.getUsername(), newName);
+
+                customer.changeUsername(newName);
+                log.logger.info(customer.getUsername()+" kullanıcı adını "+newName+" olarak değiştirdi ");
+                customer.setUsername(newName);
+
+                JOptionPane.showMessageDialog(null,"Kullanıcı adı değiştirildi",
+                        "Bilgilendirme",JOptionPane.INFORMATION_MESSAGE);
+
+            } else {
+
+                log.logger.warning(customer.getUsername() + " tarafından başarısız kullanıcı adı değiştirme talebi");
+
+                JOptionPane.showMessageDialog(null,"Bu kullanıcı adı alınamaz",
+                        "Uyarı",JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+        gbc.gridx = 1;  gbc.gridy = 1;
+        frame.add(usernameBtn, gbc);
+
+
+        JButton passwordBtn = new JButton("Şifreyi Değiştir");
+        passwordBtn.setFocusable(false);
+        passwordBtn.addActionListener(e -> {
+
+        });
+        gbc.gridx = 1;  gbc.gridy = 2;
+        frame.add(passwordBtn, gbc);
+
+
+        // Alt boşluk
+        gbc.gridx = 0;  gbc.gridy = 3;
+        frame.add(new JPanel(), gbc);
+    }
+
+    private static boolean isValid(String username) {
+        if(username.isEmpty()) { return false; }
+        if(username.length() > 45) { return false; }
+
+        MysqlConnector mysqlConnector = new MysqlConnector();
+        ResultSet resultSet = mysqlConnector.getInfo(username);
+
+        try {
+            if(resultSet.next()) {
+                resultSet.close();
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+
+        return true;
     }
 }

@@ -12,6 +12,7 @@ import java.nio.file.StandardCopyOption;
 import java.sql.ResultSet;
 
 import static org.example.managers.FileManager.fileDelete;
+import static org.example.managers.FileManager.fileRename;
 
 public class Customer extends BaseUser{
 
@@ -65,11 +66,44 @@ public class Customer extends BaseUser{
     public void delThisUser() {
         Path deleteOriginalFiles = Paths.get("src/SystemFolders/folders/OriginalFolders/" + getUsername());
         Path deleteSavedFiles = Paths.get("src/SystemFolders/folders/SavedFolders/" + getUsername());
+        Path deleteTeamFiles = Paths.get("src/SystemFolders/TeamFolders/" + getUsername());
         fileDelete(deleteOriginalFiles);
         fileDelete(deleteSavedFiles);
+        fileDelete(deleteTeamFiles);
 
         MysqlConnector mysqlConnector = new MysqlConnector();
         mysqlConnector.delUser(getUsername());
+        mysqlConnector.delFromFriends(getUsername());
+    }
+
+    @Override
+    public void changeUsername(String newName) {
+        MysqlConnector mysqlConnector = new MysqlConnector();
+        mysqlConnector.changeName(getUsername(), newName);
+    }
+
+    @Override
+    public void renameTheFolders(String newName) {
+        File oldFile = new File("src/SystemFolders/folders/OriginalFolders/" + getUsername());
+        File newFile = new File("src/SystemFolders/folders/OriginalFolders/" + newName);
+
+        fileRename(oldFile, newFile);   // Original dizinini değiştir
+
+        oldFile = new File("src/SystemFolders/folders/SavedFolders/" + getUsername());
+        newFile = new File("src/SystemFolders/folders/SavedFolders/" + newName);
+
+        fileRename(oldFile, newFile);   // Saved dizinini değiştir
+
+        oldFile = new File("src/SystemFolders/TeamFolders/" + getUsername());
+        newFile = new File("src/SystemFolders/TeamFolders/" + newName);
+
+        fileRename(oldFile, newFile);   // Team dizinini değiştir
+    }
+
+
+    @Override
+    public void renameTeamFolders(String newName) {
+
     }
 
     @Override

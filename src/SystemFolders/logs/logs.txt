@@ -101,3 +101,55 @@
 2024-12-27 20:00:58 INFO    furkan tarafından başarıyla giriş yapıldı 
 2024-12-27 20:01:08 INFO    furkan adlı kullanıcı deneme.txt adlı dosyayı kendi takım klasöründe açtı  
 2024-12-27 20:01:49 INFO    furkan adlı kullanıcı takım arkadaşlarıyla TeamFolders dizinindeki dosyalarını paylaştı  
+2024-12-27 22:07:23 INFO    Uygulama açıldı 
+2024-12-27 22:07:29 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-27 22:07:42 WARNING volkan tarafından başarısız kullanıcı adı değiştirme talebi 
+2024-12-27 22:08:11 WARNING volkan tarafından başarısız kullanıcı adı değiştirme talebi 
+2024-12-27 22:08:27 INFO    volkan kullanıcı adını Batuhan olarak değiştirdi  
+2024-12-27 22:08:58 INFO    Batuhan kullanıcı adını volkan olarak değiştirdi  
+2024-12-28 10:49:15 INFO    Uygulama açıldı 
+2024-12-28 10:49:26 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-28 10:49:47 INFO    furkan adlı kullanıcı bireysel SavedFolders dizinine yedekleme yaptı 
+2024-12-28 10:50:13 INFO    furkan kullanıcı adını emre olarak değiştirdi  
+2024-12-28 11:13:23 INFO    Uygulama açıldı 
+2024-12-28 11:13:28 INFO    emre tarafından başarıyla giriş yapıldı 
+2024-12-28 11:13:35 INFO    emre kullanıcı adını furkan olarak değiştirdi  
+2024-12-28 11:15:31 INFO    Uygulama açıldı 
+2024-12-28 11:15:38 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-28 11:15:43 INFO    furkan kullanıcı adını emre olarak değiştirdi  
+2024-12-28 11:32:37 INFO    Uygulama açıldı 
+2024-12-28 11:32:43 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-28 11:32:54 INFO    volkan tarafından emre adlı kişiye takım isteği gönderildi 
+2024-12-28 11:33:02 INFO    volkan adlı kullanıcı çıkış yaptı 
+2024-12-28 11:33:06 INFO    emre tarafından başarıyla giriş yapıldı 
+2024-12-28 11:33:27 INFO    Uygulama açıldı 
+2024-12-28 11:33:32 INFO    emre tarafından başarıyla giriş yapıldı 
+2024-12-28 11:33:39 INFO    emre kullanıcı adını furkan olarak değiştirdi  
+2024-12-28 11:36:04 INFO    Uygulama açıldı 
+2024-12-28 11:36:13 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-28 11:36:19 INFO    volkan tarafından furkan adlı kişiye takım isteği gönderildi 
+2024-12-28 11:37:18 INFO    Uygulama açıldı 
+2024-12-28 11:37:24 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-28 11:37:33 INFO    furkan kullanıcı adını emre olarak değiştirdi  
+2024-12-28 11:37:50 INFO    emre adlı kullanıcı çıkış yaptı 
+2024-12-28 11:38:06 INFO    Uygulama açıldı 
+2024-12-28 11:38:14 INFO    emre tarafından başarıyla giriş yapıldı 
+2024-12-28 11:38:23 INFO    emre tarafından volkan adlı kişiye takım isteği gönderildi 
+2024-12-28 11:38:43 INFO    emre kullanıcı adını furkan olarak değiştirdi  
+2024-12-28 11:38:48 INFO    furkan adlı kullanıcı çıkış yaptı 
+2024-12-28 11:38:55 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-28 12:21:41 INFO    Uygulama açıldı 
+2024-12-28 12:21:54 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-28 12:21:59 INFO    volkan adlı kullanıcı sistemden silindi 
+2024-12-28 12:23:52 INFO    Uygulama açıldı 
+2024-12-28 12:23:59 INFO    volkan adlı kullanıcı sisteme başarıyla kayıt oldu 
+2024-12-28 12:24:07 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-28 12:24:22 INFO    volkan tarafından furkan adlı kişiye takım isteği gönderildi 
+2024-12-28 12:24:36 INFO    volkan adlı kullanıcı sistemden silindi 
+2024-12-28 12:24:53 INFO    kerem tarafından başarıyla giriş yapıldı 
+2024-12-28 12:24:56 INFO    kerem adlı kullanıcı sistemden silindi 
+2024-12-28 12:25:01 INFO    eren tarafından başarıyla giriş yapıldı 
+2024-12-28 12:25:05 INFO    eren adlı kullanıcı sistemden silindi 
+2024-12-28 12:26:54 INFO    Uygulama açıldı 
+2024-12-28 12:27:01 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-28 12:27:23 INFO    furkan adlı kullanıcı sistemden silindi 

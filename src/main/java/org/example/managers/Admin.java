@@ -66,6 +66,21 @@ public class Admin extends BaseUser{
         mysqlConnector.delUser(getUsername());
     }
 
+    @Override
+    public void changeUsername(String newName) {
+
+    }
+
+    @Override
+    public void renameTheFolders(String newName) {
+
+    }
+
+    @Override
+    public void renameTeamFolders(String newName) {
+
+    }
+
     // Yetkisiz erişim
     @Override
     public void createFolder() {

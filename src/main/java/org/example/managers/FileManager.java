@@ -83,4 +83,13 @@ public class FileManager {
                     "Hata!(fileOpen)",JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    public static void fileRename(File oldName, File newName) {
+        if (oldName.renameTo(newName)) {
+
+        } else {
+            JOptionPane.showMessageDialog(null,"Bir hata oluştu",
+                    "Hata!(fileRename)",JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }
