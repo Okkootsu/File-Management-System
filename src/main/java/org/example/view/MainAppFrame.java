@@ -1,5 +1,6 @@
 package org.example.view;
 
+import org.example.managers.Admin;
 import org.example.managers.BaseUser;
 import org.example.managers.Customer;
 
@@ -156,7 +157,7 @@ public class MainAppFrame extends JFrame {
 
     public static class MainAdminPanel extends JPanel {
 
-        public MainAdminPanel (BaseUser admin) {
+        public MainAdminPanel (Admin admin) {
 
             this.setLayout(new BorderLayout());
 

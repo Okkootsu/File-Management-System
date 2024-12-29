@@ -1,6 +1,5 @@
 package org.example.managers;
 
-import javax.swing.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -8,9 +7,9 @@ import static org.example.managers.FileManager.fileCopy;
 
 public class CopyProcess extends Thread {
 
-    private BaseUser customer;
+    private Customer customer;
 
-    public CopyProcess(BaseUser customer){
+    public CopyProcess(Customer customer){
         this.customer = customer;
     }
 
@@ -19,13 +18,6 @@ public class CopyProcess extends Thread {
         Path source = Paths.get("src/SystemFolders/folders/OriginalFolders/" + customer.getUsername() + "/");
         Path target = Paths.get("src/SystemFolders/folders/SavedFolders/" + customer.getUsername() + "/");
 
-        fileCopy(source, target);
-
-//        try {
-//            Thread.sleep(3000);
-//        } catch (Exception e){
-//            JOptionPane.showMessageDialog(null,"Hata kodu: "+e.getMessage(),
-//                    "Beklemede sorun oluştu",JOptionPane.ERROR_MESSAGE);
-//        }
+        fileCopy(source, target, customer.getMaxFileCount());
     }
 }

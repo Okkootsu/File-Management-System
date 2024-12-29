@@ -62,6 +62,17 @@ public class Customer extends BaseUser{
         return new MainAppFrame.MainCustomerPanel(this);
     }
 
+    public int getMaxFileCount() {
+        MysqlConnector mysqlConnector = new MysqlConnector();
+        ResultSet resultSet = mysqlConnector.getInfo(getUsername());
+        try {
+            resultSet.next();
+            return resultSet.getInt("max_files");
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+
     @Override
     public void delThisUser() {
         Path deleteOriginalFiles = Paths.get("src/SystemFolders/folders/OriginalFolders/" + getUsername());

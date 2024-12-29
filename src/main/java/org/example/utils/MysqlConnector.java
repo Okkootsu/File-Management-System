@@ -442,4 +442,25 @@ public class MysqlConnector {
         }
     }
 
+    public void changeMaxFileNumber(String username, int maxFiles) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = DriverManager.getConnection(getSqlConnection(),getSqlUsername(),getSqlPassword());
+
+            Statement statement = connection.createStatement();
+
+            // Mysql'de çalışmasını istediğimiz kodu buraya yazıyoruz
+            String query = "UPDATE users " +
+                    "SET max_files = "+maxFiles+" " +
+                    "WHERE user_name = '"+username+"' ";
+
+            statement.execute(query);
+
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
+                    "Bir Hata Oluştu (createPasswordRequest)",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
 }

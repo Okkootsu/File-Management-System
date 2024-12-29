@@ -236,3 +236,31 @@
 2024-12-29 10:53:57 WARNING volkan tarafından başarısız şifre değiştirme talebi 
 2024-12-29 10:53:59 WARNING volkan tarafından başarısız şifre değiştirme talebi 
 2024-12-29 10:54:02 SEVERE  volkan tarafından anormal durum tespit edildi 
+2024-12-29 13:18:40 INFO    Uygulama açıldı 
+2024-12-29 13:18:47 INFO    admin tarafından başarıyla giriş yapıldı 
+2024-12-29 13:20:23 INFO    Uygulama açıldı 
+2024-12-29 13:20:27 INFO    admin tarafından başarıyla giriş yapıldı 
+2024-12-29 13:21:27 INFO    furkan adlı kullanıcının maksimum dosya kapasitesi 5 olarak değiştirildi  
+2024-12-29 13:21:34 INFO    admin adlı kullanıcı çıkış yaptı 
+2024-12-29 13:22:39 INFO    Uygulama açıldı 
+2024-12-29 13:22:44 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-29 13:23:09 INFO    furkan adlı kullanıcı bireysel OriginalFolders dizinine deneme.txt adlı dosyayı yükledi 
+2024-12-29 13:23:16 INFO    furkan adlı kullanıcı bireysel OriginalFolders dizinine deneme4.txt adlı dosyayı yükledi 
+2024-12-29 13:23:20 INFO    furkan adlı kullanıcı bireysel OriginalFolders dizinine deneme3.txt adlı dosyayı yükledi 
+2024-12-29 13:23:22 INFO    furkan adlı kullanıcı bireysel OriginalFolders dizinine deneme2.txt adlı dosyayı yükledi 
+2024-12-29 13:23:28 INFO    furkan adlı kullanıcı bireysel OriginalFolders dizinine deneme5.txt adlı dosyayı yükledi 
+2024-12-29 13:23:32 INFO    furkan adlı kullanıcı bireysel OriginalFolders dizinine deneme6.txt adlı dosyayı yükledi 
+2024-12-29 13:23:38 INFO    furkan adlı kullanıcı bireysel SavedFolders dizinine yedekleme yaptı 
+2024-12-29 13:34:40 INFO    Uygulama açıldı 
+2024-12-29 13:34:46 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-29 13:34:53 INFO    furkan adlı kullanıcı bireysel OriginalFolders dizininden deneme6.txt adlı dosyayı sildi 
+2024-12-29 13:35:01 INFO    furkan adlı kullanıcı bireysel SavedFolders dizinine yedekleme yaptı 
+2024-12-29 13:43:54 INFO    Uygulama açıldı 
+2024-12-29 13:44:01 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-29 13:45:28 INFO    furkan adlı kullanıcı bireysel SavedFolders dizinini boşalttı 
+2024-12-29 13:49:10 INFO    Uygulama açıldı 
+2024-12-29 13:49:15 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-29 13:49:23 INFO    furkan adlı kullanıcı bireysel OriginalFolders dizininden deneme5.txt adlı dosyayı sildi 
+2024-12-29 13:49:27 INFO    furkan adlı kullanıcı bireysel OriginalFolders dizininden deneme4.txt adlı dosyayı sildi 
+2024-12-29 13:49:33 INFO    furkan adlı kullanıcı bireysel SavedFolders dizinine yedekleme yaptı 
+2024-12-29 13:49:42 INFO    furkan adlı kullanıcı bireysel SavedFolders dizinini boşalttı 

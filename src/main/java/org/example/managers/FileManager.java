@@ -41,8 +41,17 @@ public class FileManager {
         }
     }
 
-    public static void fileCopy(Path source, Path target) {
+    public static void fileCopy(Path source, Path target, int maxFileCount) {
         try {
+
+            int fileCount = countFiles(source);
+
+            if(fileCount > maxFileCount) {
+                JOptionPane.showMessageDialog(null,"Maksimum dosya alanınız olan "+maxFileCount+"'ı aştınız",
+                        "Bir Hata Oluştu",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             Files.walkFileTree(source, new SimpleFileVisitor<>(){
                @Override
                public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
@@ -90,6 +99,19 @@ public class FileManager {
         } else {
             JOptionPane.showMessageDialog(null,"Bir hata oluştu",
                     "Hata!(fileRename)",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private static int countFiles(Path dir) {
+        try {
+            DirectoryStream<Path> stream = Files.newDirectoryStream(dir);
+            int count = 0;
+            for (Path path : stream) {
+                count++;
+            }
+            return count;
+        } catch (Exception exception) {
+            return -1;
         }
     }
 }

@@ -23,7 +23,7 @@ public class TeamCopyProcess extends Thread {
         for(int i = 0; i < friends.size(); i++) {
             Path target = Paths.get("src/SystemFolders/folders/OriginalFolders/" + friends.get(i) + "/");
 
-            fileCopy(source, target);
+            fileCopy(source, target, customer.getMaxFileCount());
         }
 
     }

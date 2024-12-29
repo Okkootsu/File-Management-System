@@ -66,6 +66,22 @@ public class Admin extends BaseUser{
         mysqlConnector.delUser(getUsername());
     }
 
+    public int getMaxFileCount(String username) {
+        MysqlConnector mysqlConnector = new MysqlConnector();
+        ResultSet resultSet = mysqlConnector.getInfo(username);
+        try {
+            resultSet.next();
+            return resultSet.getInt("max_files");
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+
+    public void changeMaxFileCount(String username, int maxFiles) {
+        MysqlConnector mysqlConnector = new MysqlConnector();
+        mysqlConnector.changeMaxFileNumber(username, maxFiles);
+    }
+
 //    public void getRequests(String from) {
 //        MysqlConnector mysqlConnector = new MysqlConnector();
 //        ResultSet resultSet =  mysqlConnector.getPasswordRequests(from);

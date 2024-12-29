@@ -6,13 +6,16 @@ import org.example.utils.MysqlConnector;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.ResultSet;
 import java.util.List;
 import java.util.Objects;
 
-import static org.example.managers.FileManager.fileCopy;
-import static org.example.managers.FileManager.fileOpen;
+import static org.example.managers.FileManager.*;
+import static org.example.managers.Log.getInstance;
 import static org.example.managers.Log.getLogs;
 
 
@@ -60,9 +63,6 @@ public class MainMenuPanel {
             gbc.gridx = 2; gbc.gridy = 0; gbc.gridwidth = 1;
             this.add(new JLabel(""), gbc);
 
-            gbc.gridx = 2; gbc.gridy = 1; gbc.gridwidth = 1;
-            this.add(new JLabel(""), gbc);
-
             // sayfa içeriği
 
             JButton uploadFolderBtn = new JButton("Dosya Yükle");
@@ -83,7 +83,7 @@ public class MainMenuPanel {
 
             });
 
-            gbc.gridx = 1; gbc.gridy = 2; gbc.gridwidth = 1;
+            gbc.gridx = 1; gbc.gridy = 1; gbc.gridwidth = 1;
             this.add(uploadFolderBtn, gbc);
 
 
@@ -106,7 +106,7 @@ public class MainMenuPanel {
 
             });
 
-            gbc.gridx = 1; gbc.gridy = 3; gbc.gridwidth = 1;
+            gbc.gridx = 1; gbc.gridy = 2; gbc.gridwidth = 1;
             this.add(changeFolderBtn, gbc);
 
 
@@ -133,7 +133,37 @@ public class MainMenuPanel {
 
             copyBtnPanel.add(copyBtn);
 
-            gbc.gridx = 2; gbc.gridy = 3; gbc.gridwidth = 1;
+
+            JButton deleteBtn = new JButton("Dosya Sil");
+            deleteBtn.setFocusable(false);
+            deleteBtn.setPreferredSize(new Dimension(95,50));
+            deleteBtn.addActionListener(e -> {
+                JFileChooser del = new JFileChooser();
+                del.setCurrentDirectory(new File("src/SystemFolders/folders/OriginalFolders/" + customer.getUsername()));
+                int choice = del.showOpenDialog(this);
+
+                if (choice == JFileChooser.APPROVE_OPTION) {
+
+                    File selectedFile = del.getSelectedFile();
+                    try {
+                        Files.delete(selectedFile.toPath());
+
+                        log.logger.info(customer.getUsername() + " adlı kullanıcı bireysel OriginalFolders" +
+                                " dizininden "+selectedFile.getName()+" adlı dosyayı sildi");
+
+                        JOptionPane.showMessageDialog(null,"Dosya kaldırıldı",
+                                "Bilgilendirme",JOptionPane.INFORMATION_MESSAGE);
+                    } catch (IOException ex) {
+                        JOptionPane.showMessageDialog(null,"Hata Kodu:"+ex.getMessage(),
+                                    "Bir Hata Oluştu (Dosya Sil)",JOptionPane.ERROR_MESSAGE);
+                    }
+
+                }
+            });
+
+            copyBtnPanel.add(deleteBtn);
+
+            gbc.gridx = 2; gbc.gridy = 2; gbc.gridwidth = 1;
             this.add(copyBtnPanel, gbc);
 
 
@@ -153,7 +183,7 @@ public class MainMenuPanel {
                         File downloads = new File(System.getProperty("user.home") + "\\Downloads\\" + selectedFile.getName());
                         Path target = downloads.toPath();
 
-                        fileCopy(source, target);
+                        fileCopy(source, target, customer.getMaxFileCount());
 
                         JOptionPane.showMessageDialog(null,"Yedek İndirildi.",
                                 "İndirme başarılı",JOptionPane.INFORMATION_MESSAGE);
@@ -161,16 +191,38 @@ public class MainMenuPanel {
                 }
             });
 
-            gbc.gridx = 1; gbc.gridy = 4; gbc.gridwidth = 1;
+            gbc.gridx = 1; gbc.gridy = 3; gbc.gridwidth = 1;
             this.add(seeSparedFoldersBtn, gbc);
 
+
+
+            JButton deleteSavedFoldersBtn = new JButton("Yedek Klasörünü Boşalt");
+            deleteSavedFoldersBtn.setFocusable(false);
+            deleteSavedFoldersBtn.addActionListener(e -> {
+                int choice = JOptionPane.showOptionDialog(this,"Yedek Klasörünü TAMAMEN silmek" +
+                                " istediğinize emin misiniz?",
+                        "Uyarı!",JOptionPane.YES_NO_OPTION,
+                        JOptionPane.INFORMATION_MESSAGE,null,null,0);
+                if(choice == 0) {
+                    Path savedFolders = Paths.get("src/SystemFolders/folders/SavedFolders/" + customer.getUsername());
+                    fileDelete(savedFolders);
+                    File remakeSaved = new File("src/SystemFolders/folders/SavedFolders/" + customer.getUsername());
+
+                    if(remakeSaved.mkdir()) {
+                        log.logger.info(customer.getUsername() + " adlı kullanıcı bireysel SavedFolders dizinini boşalttı");
+
+                        JOptionPane.showMessageDialog(null,"Yedek klasötü tamamen temizlendi",
+                                "İşlem tamamlandı",JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+            });
+
+            gbc.gridx = 1; gbc.gridy = 4; gbc.gridwidth = 1;
+            this.add(deleteSavedFoldersBtn, gbc);
 
             // Alt boşluk
 
             gbc.gridx = 0; gbc.gridy = 5; gbc.gridwidth = 1;
-            this.add(new JLabel(""), gbc);
-
-            gbc.gridx = 0; gbc.gridy = 6; gbc.gridwidth = 1;
             this.add(new JLabel(""), gbc);
 
 
@@ -182,9 +234,9 @@ public class MainMenuPanel {
     // Admin işlemlerinin yapıldığı kısım
     public static class MainAdminPanel extends JPanel implements IPanel {
 
-        private static BaseUser admin;
+        private static Admin admin;
 
-        public MainAdminPanel(JPanel mainCardPanel, CardLayout cardLayout, BaseUser admin) {
+        public MainAdminPanel(JPanel mainCardPanel, CardLayout cardLayout, Admin admin) {
             this.admin = admin;
             initializePanel(mainCardPanel, cardLayout);
         }
@@ -310,6 +362,9 @@ public class MainMenuPanel {
         }
 
         private static void userFrame(String username) {
+
+            Log log = getInstance();
+
             JFrame frame = new JFrame();
             frame.setVisible(true);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -343,7 +398,7 @@ public class MainMenuPanel {
             JLabel user = new JLabel(username);
             user.setFont(basicFont);
 
-            gbc.gridx = 1;  gbc.gridy = 0; gbc.gridwidth = 2;
+            gbc.gridx = 1;  gbc.gridy = 0; gbc.gridwidth = 3;
             frame.add(user, gbc);
 
 
@@ -363,7 +418,7 @@ public class MainMenuPanel {
                 JLabel pass = new JLabel(hashedP);
                 pass.setFont(basicFont);
 
-                gbc.gridx = 1;  gbc.gridy = 1; gbc.gridwidth = 2;
+                gbc.gridx = 1;  gbc.gridy = 1; gbc.gridwidth = 3;
                 frame.add(pass, gbc);
 
             } catch (Exception exception) {
@@ -378,10 +433,10 @@ public class MainMenuPanel {
             frame.add(maxFilesLabel, gbc);
 
 
-            JLabel maxFile = new JLabel("10");
+            JLabel maxFile = new JLabel(String.valueOf(admin.getMaxFileCount(username)));
             maxFile.setFont(basicFont);
 
-            gbc.gridx = 1;  gbc.gridy = 2; gbc.gridwidth = 2;
+            gbc.gridx = 1;  gbc.gridy = 2; gbc.gridwidth = 3;
             frame.add(maxFile, gbc);
 
 
@@ -420,6 +475,21 @@ public class MainMenuPanel {
 
             gbc.gridx = 2;  gbc.gridy = 3; gbc.gridwidth = 1;
             frame.add(requestsBtn, gbc);
+
+            JButton fileCountBtn = new JButton("Max Dosya Sayısını Ayarla");
+            fileCountBtn.setFocusable(false);
+            fileCountBtn.addActionListener(e -> {
+                String count = JOptionPane.showInputDialog("Yeni max dosya sayısı:");
+                admin.changeMaxFileCount(username, Integer.parseInt(count));
+
+                log.logger.info(username+" adlı kullanıcının maksimum dosya kapasitesi "+count+" olarak değiştirildi ");
+
+                JOptionPane.showMessageDialog(null,"Kullanıcının maksimum dosya kapasitesi değiştirildi",
+                        "Bilgilendirme",JOptionPane.INFORMATION_MESSAGE);
+            });
+
+            gbc.gridx = 3;  gbc.gridy = 3; gbc.gridwidth = 1;
+            frame.add(fileCountBtn, gbc);
 
         }
 
