@@ -181,3 +181,58 @@
 2024-12-28 18:15:27 INFO    admin adlı kullanıcı çıkış yaptı 
 2024-12-28 18:15:34 WARNING volkan tarafından başarısız giriş yapma işlemi 
 2024-12-28 18:15:36 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-28 19:02:02 INFO    Uygulama açıldı 
+2024-12-28 19:02:29 INFO    admin tarafından başarıyla giriş yapıldı 
+2024-12-28 19:10:26 INFO    Uygulama açıldı 
+2024-12-28 19:10:32 INFO    admin tarafından başarıyla giriş yapıldı 
+2024-12-28 19:37:52 INFO    Uygulama açıldı 
+2024-12-28 19:37:59 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-28 19:38:06 INFO    volkan adlı kullanıcı şifre değiştirme talebinde bulundu 
+2024-12-28 19:38:13 INFO    volkan tarafından furkan adlı kişiye takım isteği gönderildi 
+2024-12-28 19:38:59 INFO    volkan adlı kullanıcı çıkış yaptı 
+2024-12-28 19:39:04 INFO    admin tarafından başarıyla giriş yapıldı 
+2024-12-28 19:43:00 INFO    Uygulama açıldı 
+2024-12-28 19:43:10 WARNING volkan tarafından başarısız giriş yapma işlemi 
+2024-12-28 19:43:13 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-28 19:43:16 INFO    volkan adlı kullanıcı çıkış yaptı 
+2024-12-28 19:43:21 INFO    admin tarafından başarıyla giriş yapıldı 
+2024-12-28 19:55:42 INFO    Uygulama açıldı 
+2024-12-28 19:55:47 WARNING volkan tarafından başarısız giriş yapma işlemi 
+2024-12-28 19:55:49 WARNING volkan tarafından başarısız giriş yapma işlemi 
+2024-12-28 19:55:51 WARNING volkan tarafından başarısız giriş yapma işlemi 
+2024-12-28 19:55:51 SEVERE  volkan tarafından anormal durum tespit edildi 
+2024-12-28 19:55:58 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-28 19:56:01 INFO    volkan adlı kullanıcı çıkış yaptı 
+2024-12-28 19:56:06 INFO    admin tarafından başarıyla giriş yapıldı 
+2024-12-29 10:28:43 INFO    Uygulama açıldı 
+2024-12-29 10:28:49 WARNING volkan tarafından başarısız giriş yapma işlemi 
+2024-12-29 10:28:51 WARNING volkan tarafından başarısız giriş yapma işlemi 
+2024-12-29 10:28:52 WARNING volkan tarafından başarısız giriş yapma işlemi 
+2024-12-29 10:28:52 SEVERE  volkan tarafından anormal durum tespit edildi 
+2024-12-29 10:28:57 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-29 10:29:06 INFO    volkan adlı kullanıcı bireysel SavedFolders dizinine yedekleme yaptı 
+2024-12-29 10:29:07 SEVERE  volkan tarafından anormal durum tespit edildi 
+2024-12-29 10:30:02 INFO    volkan tarafından furkan adlı kişiye takım isteği gönderildi 
+2024-12-29 10:30:06 INFO    volkan adlı kullanıcı çıkış yaptı 
+2024-12-29 10:30:20 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-29 10:30:29 INFO    furkan tarafından volkan adlı kişi takım arkadaşı olarak eklendi 
+2024-12-29 10:30:41 INFO    furkan adlı kullanıcı takım arkadaşlarıyla TeamFolders dizinindeki dosyalarını paylaştı  
+2024-12-29 10:30:42 SEVERE  furkan tarafından anormal durum tespit edildi 
+2024-12-29 10:35:47 INFO    Uygulama açıldı 
+2024-12-29 10:35:56 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-29 10:44:36 INFO    Uygulama açıldı 
+2024-12-29 10:44:43 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-29 10:44:51 WARNING volkan tarafından başarısız şifre değiştirme talebi 
+2024-12-29 10:45:29 INFO    Uygulama açıldı 
+2024-12-29 10:45:34 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-29 10:45:54 INFO    furkan adlı kullanıcı şifre değiştirme talebinde bulundu 
+2024-12-29 10:53:33 INFO    Uygulama açıldı 
+2024-12-29 10:53:40 WARNING volkan tarafından başarısız giriş yapma işlemi 
+2024-12-29 10:53:41 WARNING volkan tarafından başarısız giriş yapma işlemi 
+2024-12-29 10:53:43 WARNING volkan tarafından başarısız giriş yapma işlemi 
+2024-12-29 10:53:43 SEVERE  volkan tarafından anormal durum tespit edildi 
+2024-12-29 10:53:47 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-29 10:53:55 WARNING volkan tarafından başarısız şifre değiştirme talebi 
+2024-12-29 10:53:57 WARNING volkan tarafından başarısız şifre değiştirme talebi 
+2024-12-29 10:53:59 WARNING volkan tarafından başarısız şifre değiştirme talebi 
+2024-12-29 10:54:02 SEVERE  volkan tarafından anormal durum tespit edildi 

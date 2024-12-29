@@ -7,6 +7,8 @@ import org.example.view.MainAppFrame;
 import javax.swing.*;
 import java.sql.ResultSet;
 
+
+import static org.example.managers.AbnormalBehaviours.isLoginAbnormal;
 import static org.example.utils.PasswordHashing.verifyPassword;
 
 public class Login {
@@ -19,9 +21,18 @@ public class Login {
 
             log.logger.warning(username+" tarafından başarısız giriş yapma işlemi");
 
-            JOptionPane.showMessageDialog(null,"Girilen bilgiler hatalı \n" +
-                            "Lütfen tekrar deneyiniz",
-                    "Uyarı",JOptionPane.INFORMATION_MESSAGE);
+            if(isLoginAbnormal(username)) {
+
+                log.logger.severe(username + " tarafından anormal durum tespit edildi");
+
+                JOptionPane.showMessageDialog(null,"Uyarı! \n" +
+                                "Kısa süre içerisinde çok fazla hatalı giriş denemesi yaptınız",
+                        "UYARI!",JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null,"Girilen bilgiler hatalı \n" +
+                                "Lütfen tekrar deneyiniz",
+                        "Uyarı",JOptionPane.INFORMATION_MESSAGE);
+            }
 
         }
         else {

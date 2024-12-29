@@ -272,10 +272,13 @@ public class NewTeamPanel extends JPanel implements IPanel {
         try {
             while(resultSet.next()) {
 
-                JPanel cellPanel = cell(resultSet.getString("user_name"));
+                if( !(resultSet.getString("user_name").equals(customer.getUsername())) ) {
+                    JPanel cellPanel = cell(resultSet.getString("user_name"));
 
-                frame.add(cellPanel, gbc);
-                gbc.gridy++;
+                    frame.add(cellPanel, gbc);
+                    gbc.gridy++;
+                }
+
             }
 
         } catch (Exception exception) {
@@ -461,16 +464,11 @@ public class NewTeamPanel extends JPanel implements IPanel {
             shareBtn.addActionListener(e -> {
 
                 TeamCopyProcess copyProcess = new TeamCopyProcess(customer, chosenFriends);
-                ProgressBarProcess progress = new ProgressBarProcess();
+                ProgressBarProcess progress = new ProgressBarProcess(customer.getUsername());
 
                 copyProcess.start();
                 progress.start();
-                try {
-                    copyProcess.join();
-                    progress.join();
-                } catch (InterruptedException ex) {
 
-                }
 
                 log.logger.info(customer.getUsername() + " adlı kullanıcı takım arkadaşlarıyla TeamFolders" +
                         " dizinindeki dosyalarını paylaştı ");

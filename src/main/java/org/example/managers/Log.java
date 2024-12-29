@@ -1,6 +1,12 @@
 package org.example.managers;
 
 import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.FileHandler;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
@@ -44,5 +50,52 @@ public class Log {
             instance = new Log();
         }
         return instance;
+    }
+
+    public static List<String> getLogs(String username) {
+        try {
+            List<String> list = new ArrayList<>();
+            BufferedReader reader = new BufferedReader(new FileReader("src/SystemFolders/logs/logs.txt"));
+            String line;
+            while( (line = reader.readLine()) != null ) {
+                if( line.contains(username) ) {
+                    list.add(line);
+                }
+            }
+            reader.close();
+            return list;
+
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(null,"Hata kodu: " +exception.getMessage() ,
+                    "Hata!",JOptionPane.ERROR_MESSAGE);
+
+            return null;
+        }
+    }
+
+    public static List<String> lastMinuteLogs(String username) {
+        List<String> userLogs = getLogs(username);
+        List<String> presentLogs = new ArrayList<>();
+
+        // Şu anki zaman
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime oneMinuteAgo = now.minusMinutes(1);
+
+        // Zaman formatı (log dosyasındaki formatla eşleşmeli)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        assert userLogs != null;
+        for(String line : userLogs) {
+            String[] timeParts = line.split(" ",3);
+            String dateTimeString = timeParts[0] + " " + timeParts[1];
+            LocalDateTime logTime = LocalDateTime.parse(dateTimeString, formatter);
+
+            if (logTime.isAfter(oneMinuteAgo) && logTime.isBefore(now)) {
+                presentLogs.add(line);
+            }
+
+        }
+
+        return presentLogs;
     }
 }

@@ -8,11 +8,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.sql.ResultSet;
 
+import static org.example.managers.AbnormalBehaviours.isRequestAbnormal;
 import static org.example.utils.PasswordHashing.hashPassword;
 
 public class AccountPanel extends JPanel implements IPanel {
 
-    BaseUser customer;
+    static BaseUser customer;
 
     public AccountPanel(JPanel mainCardPanel, CardLayout cardLayout, BaseUser customer) {
         this.customer = customer;
@@ -233,10 +234,20 @@ public class AccountPanel extends JPanel implements IPanel {
                         "Bilgilendirme",JOptionPane.INFORMATION_MESSAGE);
 
             } else {
-                log.logger.warning(customer.getUsername() + " tarafından başarısız şifre değiştirme talebi");
 
-                JOptionPane.showMessageDialog(null,"Bu şifre kullanılamaz",
-                        "Uyarı",JOptionPane.INFORMATION_MESSAGE);
+                if(isRequestAbnormal(customer.getUsername())) {
+                    log.logger.severe(customer.getUsername() + " tarafından anormal durum tespit edildi");
+
+                    JOptionPane.showMessageDialog(null,"Uyarı! \n" +
+                                    "Kısa süre içerisinde çok fazla hatalı şifre değiştirme talebi yaptınız",
+                            "UYARI!",JOptionPane.ERROR_MESSAGE);
+                } else {
+                    log.logger.warning(customer.getUsername() + " tarafından başarısız şifre değiştirme talebi");
+
+                    JOptionPane.showMessageDialog(null,"Bu şifre kullanılamaz",
+                            "Uyarı",JOptionPane.INFORMATION_MESSAGE);
+                }
+
             }
         });
         gbc.gridx = 1;  gbc.gridy = 2;
@@ -270,6 +281,17 @@ public class AccountPanel extends JPanel implements IPanel {
     private static boolean isValidPassword(String password) {
         if(password.isEmpty()) { return false; }
         if(password.length() > 45) { return false; }
+
+        MysqlConnector mysqlConnector = new MysqlConnector();
+        ResultSet resultSet = mysqlConnector.getPasswordRequests(customer.getUsername());
+
+        try {
+            if(resultSet.next()) {
+                return false;
+            }
+        } catch (Exception exception) {
+            return false;
+        }
 
         return true;
     }

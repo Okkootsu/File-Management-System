@@ -8,11 +8,12 @@ import java.awt.*;
 import java.io.File;
 import java.nio.file.Path;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.List;
+import java.util.Objects;
 
 import static org.example.managers.FileManager.fileCopy;
 import static org.example.managers.FileManager.fileOpen;
-
+import static org.example.managers.Log.getLogs;
 
 
 public class MainMenuPanel {
@@ -75,6 +76,9 @@ public class MainMenuPanel {
                     File selectedFile = upload.getSelectedFile();
 
                     customer.addToWorkPlace(selectedFile);
+
+                    log.logger.info(customer.getUsername()+" adlı kullanıcı bireysel OriginalFolders dizinine" +
+                            " "+selectedFile.getName()+" adlı dosyayı yükledi");
                 }
 
             });
@@ -96,6 +100,8 @@ public class MainMenuPanel {
 
                 fileOpen(selectedFile);
 
+                log.logger.info(customer.getUsername()+" adlı kullanıcı bireysel OriginalFolders dizininde dosya" +
+                        " düzenlemesini açtı");
             }
 
             });
@@ -116,16 +122,11 @@ public class MainMenuPanel {
             copyBtn.addActionListener(e -> {
 
                 CopyProcess copyProcess = new CopyProcess(customer);
-                ProgressBarProcess progress = new ProgressBarProcess();
+                ProgressBarProcess progress = new ProgressBarProcess(customer.getUsername());
 
                 copyProcess.start();
                 progress.start();
-                try {
-                    copyProcess.join();
-                    progress.join();
-                } catch (InterruptedException ex) {
 
-                }
 
                 log.logger.info(customer.getUsername()+" adlı kullanıcı bireysel SavedFolders dizinine yedekleme yaptı");
             });
@@ -405,7 +406,7 @@ public class MainMenuPanel {
             JButton logsBtn = new JButton("Logları");
             logsBtn.setFocusable(false);
             logsBtn.addActionListener(e -> {
-
+                logs(username);
             });
 
             gbc.gridx = 1;  gbc.gridy = 3; gbc.gridwidth = 1;
@@ -513,6 +514,31 @@ public class MainMenuPanel {
                 JOptionPane.showMessageDialog(null,"Hata Kodu:"+exception.getMessage(),
                         "Bir Hata Oluştu (Requests)",JOptionPane.ERROR_MESSAGE);
             }
+        }
+
+        private static void logs(String username) {
+            JFrame frame = new JFrame();
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.setTitle(username+" logları");
+            frame.setBackground(new Color(203, 220, 235));
+            frame.setSize(450,250);
+            frame.setLocationRelativeTo(null);
+
+            JPanel labelPanel = new JPanel();
+            labelPanel.setLayout(new BoxLayout(labelPanel, BoxLayout.Y_AXIS)); // Dikey düzen
+
+            // içerik
+            List<String> userLogs = getLogs(username);
+
+            for(int i = 0; i < Objects.requireNonNull(userLogs).size(); i++) {
+                JLabel label = new JLabel(userLogs.get(i));
+                label.setFont(new Font("Times New Roman",Font.BOLD,15));
+                labelPanel.add(label);
+            }
+
+            JScrollPane scrollPane = new JScrollPane(labelPanel);
+            frame.add(scrollPane);
+            frame.setVisible(true);
         }
     }
 }

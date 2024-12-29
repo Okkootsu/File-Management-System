@@ -2,8 +2,16 @@ package org.example.managers;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class ProgressBarProcess extends Thread {
+
+    private String username;
+
+    public ProgressBarProcess(String username){
+        this.username = username;
+    }
 
     @Override
     public void run() {
@@ -15,11 +23,30 @@ public class ProgressBarProcess extends Thread {
     JFrame frame;
 
     private void progress() {
+
+        Log log = Log.getInstance();
+
         frame = new JFrame("Kopyalanıyor...");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setLocation(500,250);
         frame.setSize(450,300);
         frame.setLayout(new GridBagLayout());
+
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                if (bar.getValue() < 100) {
+                    frame.dispose();
+
+                    log.logger.severe(username + " tarafından anormal durum tespit edildi");
+
+                    JOptionPane.showMessageDialog(null,"Uyarı! \n" +
+                                    "Yedekleme yapılırken bir hata meydana geldi",
+                            "UYARI!",JOptionPane.ERROR_MESSAGE);
+                }
+                frame.dispose();
+            }
+        });
 
         GridBagConstraints gbc = new GridBagConstraints();
 

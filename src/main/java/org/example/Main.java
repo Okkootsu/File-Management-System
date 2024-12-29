@@ -10,8 +10,8 @@ import javax.swing.*;
 // Kullanıcı giriş sistemi +
 // Kullanıcı işlemleri +
 // Depolama ve Yedekleme +
-// Dosya İşlemleri +
-// Admin işlemleri
+// Dosya İşlemleri -
+// Admin işlemleri +
 // Loglama +
 // Anormal davranışları gözlemleme ve durdurma
 // Kullanıcı şifresini şifreleme +
