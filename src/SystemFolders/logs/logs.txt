@@ -264,3 +264,84 @@
 2024-12-29 13:49:27 INFO    furkan adlı kullanıcı bireysel OriginalFolders dizininden deneme4.txt adlı dosyayı sildi 
 2024-12-29 13:49:33 INFO    furkan adlı kullanıcı bireysel SavedFolders dizinine yedekleme yaptı 
 2024-12-29 13:49:42 INFO    furkan adlı kullanıcı bireysel SavedFolders dizinini boşalttı 
+2024-12-29 15:58:41 INFO    Uygulama açıldı 
+2024-12-29 15:58:50 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-29 15:58:51 INFO    furkan adlı kullanıcı için otomatik yedekleme yapıldı 
+2024-12-29 15:59:01 INFO    furkan adlı kullanıcı için otomatik yedekleme yapıldı 
+2024-12-29 15:59:11 INFO    furkan adlı kullanıcı için otomatik yedekleme yapıldı 
+2024-12-29 15:59:16 INFO    furkan adlı kullanıcı bireysel OriginalFolders dizininden deneme3.txt adlı dosyayı sildi 
+2024-12-29 15:59:21 INFO    furkan adlı kullanıcı için otomatik yedekleme yapıldı 
+2024-12-29 15:59:31 INFO    furkan adlı kullanıcı için otomatik yedekleme yapıldı 
+2024-12-29 15:59:41 INFO    furkan adlı kullanıcı için otomatik yedekleme yapıldı 
+2024-12-29 15:59:45 INFO    furkan adlı kullanıcı bireysel SavedFolders dizinini boşalttı 
+2024-12-29 15:59:51 INFO    furkan adlı kullanıcı için otomatik yedekleme yapıldı 
+2024-12-29 16:00:01 INFO    furkan adlı kullanıcı için otomatik yedekleme yapıldı 
+2024-12-29 16:00:11 INFO    furkan adlı kullanıcı için otomatik yedekleme yapıldı 
+2024-12-29 16:00:21 INFO    furkan adlı kullanıcı için otomatik yedekleme yapıldı 
+2024-12-29 16:00:31 INFO    furkan adlı kullanıcı için otomatik yedekleme yapıldı 
+2024-12-29 16:00:41 INFO    furkan adlı kullanıcı için otomatik yedekleme yapıldı 
+2024-12-29 16:18:30 INFO    Uygulama açıldı 
+2024-12-29 16:18:36 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-29 16:22:34 INFO    Uygulama açıldı 
+2024-12-29 16:22:37 WARNING furkan tarafından başarısız giriş yapma işlemi 
+2024-12-29 16:22:41 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-29 16:24:12 INFO    Uygulama açıldı 
+2024-12-29 16:24:17 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-29 16:26:01 INFO    Uygulama açıldı 
+2024-12-29 16:26:06 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-29 16:27:10 INFO    Uygulama açıldı 
+2024-12-29 16:27:15 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-29 16:27:35 INFO    Uygulama açıldı 
+2024-12-29 16:27:41 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-29 16:28:29 INFO    Uygulama açıldı 
+2024-12-29 16:28:36 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-29 16:28:48 INFO    Uygulama açıldı 
+2024-12-29 16:28:53 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-29 16:29:54 INFO    Uygulama açıldı 
+2024-12-29 16:29:59 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-29 16:30:02 INFO    furkan adlı kullanıcı için otomatik yedekleme yapıldı 
+2024-12-29 16:30:17 INFO    furkan adlı kullanıcı için otomatik yedekleme yapıldı 
+2024-12-29 16:30:32 INFO    furkan adlı kullanıcı için otomatik yedekleme yapıldı 
+2024-12-29 16:30:37 INFO    furkan adlı kullanıcı bireysel SavedFolders dizinini boşalttı 
+2024-12-30 09:30:40 INFO    Uygulama açıldı 
+2024-12-30 09:33:55 INFO    mehmet adlı kullanıcı sisteme başarıyla kayıt oldu 
+2024-12-30 09:36:14 INFO    Uygulama açıldı 
+2024-12-30 09:36:22 INFO    mehmet tarafından başarıyla giriş yapıldı 
+2024-12-30 09:43:13 INFO    mehmet adlı kullanıcı bireysel OriginalFolders dizinine deneme.txt adlı dosyayı yükledi 
+2024-12-30 09:47:15 INFO    mehmet adlı kullanıcı bireysel OriginalFolders dizininde dosya düzenlemesini açtı 
+2024-12-30 09:48:33 INFO    mehmet adlı kullanıcı bireysel SavedFolders dizinine yedekleme yaptı 
+2024-12-30 09:52:56 INFO    Uygulama açıldı 
+2024-12-30 09:53:03 INFO    mehmet tarafından başarıyla giriş yapıldı 
+2024-12-30 09:53:18 INFO    mehmet adlı kullanıcı bireysel OriginalFolders dizininden deneme.txt adlı dosyayı sildi 
+2024-12-30 09:54:31 INFO    Uygulama açıldı 
+2024-12-30 09:54:38 INFO    mehmet tarafından başarıyla giriş yapıldı 
+2024-12-30 09:54:49 INFO    mehmet adlı kullanıcı bireysel SavedFolders dizinini boşalttı 
+2024-12-30 09:56:28 INFO    Uygulama açıldı 
+2024-12-30 09:56:40 INFO    mehmet tarafından başarıyla giriş yapıldı 
+2024-12-30 09:57:58 INFO    mehmet kullanıcı adını mustafa olarak değiştirdi  
+2024-12-30 09:58:37 INFO    mustafa adlı kullanıcı şifre değiştirme talebinde bulundu 
+2024-12-30 10:04:17 INFO    Uygulama açıldı 
+2024-12-30 10:04:23 INFO    mustafa tarafından başarıyla giriş yapıldı 
+2024-12-30 10:05:14 INFO    mustafa adlı kullanıcı  deneme6.txt adlı dosyayı kendi takım klasörüne ekledi  
+2024-12-30 10:05:18 INFO    mustafa adlı kullanıcı takım dizininden deneme6.txt adlı dosyayı sildi 
+2024-12-30 10:06:51 INFO    mustafa tarafından volkan adlı kişiye takım isteği gönderildi 
+2024-12-30 10:06:54 INFO    mustafa tarafından furkan adlı kişiye takım isteği gönderildi 
+2024-12-30 10:07:41 INFO    mustafa adlı kullanıcı çıkış yaptı 
+2024-12-30 10:07:48 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-30 10:08:02 INFO    furkan tarafından mustafa adlı kişi takım arkadaşı olarak eklendi 
+2024-12-30 10:08:33 INFO    Uygulama açıldı 
+2024-12-30 10:08:38 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-30 10:08:58 INFO    furkan adlı kullanıcı  deneme2.txt adlı dosyayı kendi takım klasörüne ekledi  
+2024-12-30 10:10:49 INFO    furkan adlı kullanıcı takım arkadaşlarıyla TeamFolders dizinindeki dosyalarını paylaştı  
+2024-12-30 10:16:02 INFO    Uygulama açıldı 
+2024-12-30 10:16:08 INFO    admin tarafından başarıyla giriş yapıldı 
+2024-12-30 10:20:16 INFO    mustafa adlı kullanıcının maksimum dosya kapasitesi 5 olarak değiştirildi  
+2024-12-30 10:21:43 INFO    admin adlı kullanıcı çıkış yaptı 
+2024-12-30 10:22:14 WARNING mustafa tarafından başarısız giriş yapma işlemi 
+2024-12-30 10:22:22 WARNING mustafa tarafından başarısız giriş yapma işlemi 
+2024-12-30 10:22:24 WARNING mustafa tarafından başarısız giriş yapma işlemi 
+2024-12-30 10:22:24 SEVERE  mustafa tarafından anormal durum tespit edildi 
+2024-12-30 10:23:20 INFO    Uygulama açıldı 
+2024-12-30 10:23:25 INFO    mustafa tarafından başarıyla giriş yapıldı 
+2024-12-30 10:23:38 INFO    mustafa adlı kullanıcı bireysel SavedFolders dizinine yedekleme yaptı 
+2024-12-30 10:23:39 SEVERE  mustafa tarafından anormal durum tespit edildi 

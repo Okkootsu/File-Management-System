@@ -13,6 +13,8 @@ import java.nio.file.Paths;
 import java.sql.ResultSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static org.example.managers.FileManager.*;
 import static org.example.managers.Log.getInstance;
@@ -26,6 +28,7 @@ public class MainMenuPanel {
     public static class MainCustomerPanel extends JPanel implements IPanel {
 
         Customer customer;
+        private Timer timer;
 
         public MainCustomerPanel(JPanel mainCardPanel, CardLayout cardLayout, Customer customer) {
             this.customer = customer;
@@ -85,6 +88,43 @@ public class MainMenuPanel {
 
             gbc.gridx = 1; gbc.gridy = 1; gbc.gridwidth = 1;
             this.add(uploadFolderBtn, gbc);
+
+
+            JPanel autoSavePanel = new JPanel();
+            autoSavePanel.setLayout(new FlowLayout(FlowLayout.LEADING));
+            autoSavePanel.setOpaque(false);
+            autoSavePanel.setPreferredSize(new Dimension(100,25));
+
+            JCheckBox autoSave = new JCheckBox("Otomatik Kopyalamayı Aç");
+            autoSave.setFocusable(false);
+            autoSave.setOpaque(false);
+            autoSave.setPreferredSize(new Dimension(225,75));
+            autoSave.setFont(new Font("Times New Roman",Font.BOLD,15));
+            autoSave.addActionListener(e -> {
+                if(autoSave.isSelected()) {
+                    timer = new Timer();
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            CopyProcess autoCopyProcess = new CopyProcess(customer);
+                            ProgressBarProcess autoProgress = new ProgressBarProcess(customer.getUsername());
+
+                            autoCopyProcess.start();
+                            autoProgress.start();
+
+
+                            log.logger.info(customer.getUsername()+" adlı kullanıcı için otomatik yedekleme yapıldı");
+                        }
+                    }, 0, 15 * 1000);
+                } else {
+                    timer.cancel();
+                    timer = null;
+                }
+            });
+            autoSavePanel.add(autoSave);
+
+            gbc.gridx = 2; gbc.gridy = 1; gbc.gridwidth = 1;
+            this.add(autoSavePanel, gbc);
 
 
             JButton changeFolderBtn = new JButton("Dosyalarda Değişiklik Yap");

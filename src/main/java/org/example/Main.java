@@ -13,7 +13,7 @@ import javax.swing.*;
 // Dosya İşlemleri +
 // Admin işlemleri +
 // Loglama +
-// Anormal davranışları gözlemleme ve durdurma
+// Anormal davranışları gözlemleme ve durdurma +
 // Kullanıcı şifresini şifreleme +
 // GUI +
 // Takımlaşma +

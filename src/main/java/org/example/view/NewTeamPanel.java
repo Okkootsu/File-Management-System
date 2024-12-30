@@ -6,6 +6,8 @@ import org.example.utils.MysqlConnector;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -173,16 +175,45 @@ public class NewTeamPanel extends JPanel implements IPanel {
         rightPanel.add(shareFileBtn, gbc);
 
 
+        JButton deleteFileBtn = new JButton("Dosya Sil");
+        deleteFileBtn.setFocusable(false);
+        deleteFileBtn.addActionListener(e -> {
+            JFileChooser del = new JFileChooser();
+            del.setCurrentDirectory(new File("src/SystemFolders/TeamFolders/" + customer.getUsername()));
+            int choice = del.showOpenDialog(this);
+
+            if (choice == JFileChooser.APPROVE_OPTION) {
+
+                File selectedFile = del.getSelectedFile();
+                try {
+                    Files.delete(selectedFile.toPath());
+
+                    log.logger.info(customer.getUsername() + " adlı kullanıcı takım" +
+                            " dizininden "+selectedFile.getName()+" adlı dosyayı sildi");
+
+                    JOptionPane.showMessageDialog(null,"Dosya kaldırıldı",
+                            "Bilgilendirme",JOptionPane.INFORMATION_MESSAGE);
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(null,"Hata Kodu:"+ex.getMessage(),
+                            "Bir Hata Oluştu (Dosya Sil)",JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        });
+        gbc.gridx = 1;  gbc.gridy = 5;  gbc.gridwidth = 1;
+        rightPanel.add(deleteFileBtn, gbc);
+
+
         JButton seeRequestsBtn = new JButton("Davetler");
         seeRequestsBtn.setFocusable(false);
         seeRequestsBtn.addActionListener(e -> {
             invites();
         });
-        gbc.gridx = 1;  gbc.gridy = 5;  gbc.gridwidth = 1;
+        gbc.gridx = 1;  gbc.gridy = 6;  gbc.gridwidth = 1;
         rightPanel.add(seeRequestsBtn, gbc);
 
         // Right -> Bottom Blank Lines
-        gbc.gridx = 2;  gbc.gridy = 6;  gbc.gridwidth = 1;
+        gbc.gridx = 2;  gbc.gridy = 7;  gbc.gridwidth = 1;
         rightPanel.add(new JLabel(""), gbc);
 
         center.add(rightPanel);
