@@ -345,3 +345,34 @@
 2024-12-30 10:23:25 INFO    mustafa tarafından başarıyla giriş yapıldı 
 2024-12-30 10:23:38 INFO    mustafa adlı kullanıcı bireysel SavedFolders dizinine yedekleme yaptı 
 2024-12-30 10:23:39 SEVERE  mustafa tarafından anormal durum tespit edildi 
+2024-12-30 16:08:16 INFO    Uygulama açıldı 
+2024-12-30 16:08:22 INFO    mustafa tarafından başarıyla giriş yapıldı 
+2024-12-30 16:08:30 WARNING mustafa tarafından başarısız şifre değiştirme talebi 
+2024-12-30 16:08:43 WARNING mustafa tarafından başarısız şifre değiştirme talebi 
+2024-12-30 16:08:48 WARNING mustafa tarafından başarısız şifre değiştirme talebi 
+2024-12-30 16:09:42 INFO    Uygulama açıldı 
+2024-12-30 16:09:48 INFO    mustafa tarafından başarıyla giriş yapıldı 
+2024-12-30 16:09:52 WARNING mustafa tarafından başarısız kullanıcı adı değiştirme talebi 
+2024-12-30 16:10:02 INFO    mustafa kullanıcı adını hüseyin olarak değiştirdi  
+2024-12-30 16:17:26 INFO    Uygulama açıldı 
+2024-12-30 16:17:31 INFO    admin tarafından başarıyla giriş yapıldı 
+2024-12-30 16:18:34 INFO    furkan adlı kullanıcının şifre değiştirme talebi reddedildi 
+2024-12-30 16:18:56 INFO    Uygulama açıldı 
+2024-12-30 16:19:01 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-30 16:22:44 INFO    Uygulama açıldı 
+2024-12-30 16:22:52 INFO    hüseyin tarafından başarıyla giriş yapıldı 
+2024-12-30 16:23:00 INFO    hüseyin kullanıcı adını mustafa olarak değiştirdi  
+2024-12-30 16:23:10 INFO    mustafa adlı kullanıcı çıkış yaptı 
+2024-12-30 16:23:17 INFO    admin tarafından başarıyla giriş yapıldı 
+2024-12-30 16:23:24 INFO    mustafa adlı kullanıcının şifre değiştirme talebi reddedildi 
+2024-12-30 16:23:47 INFO    admin adlı kullanıcı çıkış yaptı 
+2024-12-30 16:23:53 INFO    mustafa tarafından başarıyla giriş yapıldı 
+2024-12-30 16:24:02 INFO    mustafa adlı kullanıcı şifre değiştirme talebinde bulundu 
+2024-12-30 16:24:08 WARNING mustafa tarafından başarısız şifre değiştirme talebi 
+2024-12-30 16:24:16 INFO    mustafa adlı kullanıcı çıkış yaptı 
+2024-12-30 16:24:23 INFO    admin tarafından başarıyla giriş yapıldı 
+2024-12-30 16:24:30 INFO    admin adlı kullanıcı çıkış yaptı 
+2024-12-30 16:24:35 INFO    mustafa tarafından başarıyla giriş yapıldı 
+2024-12-30 16:24:42 INFO    mustafa kullanıcı adını hüseyin olarak değiştirdi  
+2024-12-30 16:24:58 INFO    hüseyin adlı kullanıcı çıkış yaptı 
+2024-12-30 16:25:03 INFO    admin tarafından başarıyla giriş yapıldı 

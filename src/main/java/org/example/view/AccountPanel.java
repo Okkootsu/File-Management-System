@@ -199,7 +199,7 @@ public class AccountPanel extends JPanel implements IPanel {
                 customer.renameTheFolders(newName);
 
                 MysqlConnector mysqlConnector = new MysqlConnector();
-                mysqlConnector.updateFriends(customer.getUsername(), newName);
+                mysqlConnector.updateName(customer.getUsername(), newName);
 
                 customer.changeUsername(newName);
                 log.logger.info(customer.getUsername()+" kullanıcı adını "+newName+" olarak değiştirdi ");

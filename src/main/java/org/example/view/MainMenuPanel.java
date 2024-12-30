@@ -602,6 +602,29 @@ public class MainMenuPanel {
                     });
                     rightPanel.add(acceptBtn);
 
+                    JButton denyBtn = new JButton("Reddet");
+                    denyBtn.setFocusable(false);
+                    denyBtn.addActionListener(e -> {
+                        try {
+                            mysqlConnector.deletePasswordRequest(username);
+
+                            log.logger.info(username+" adlı kullanıcının şifre değiştirme talebi reddedildi");
+
+                            JOptionPane.showMessageDialog(null,"İstek reddedildi",
+                                    "Bilgilendirme",JOptionPane.INFORMATION_MESSAGE);
+
+                            Thread.sleep(1000);
+
+                            frame.dispose();
+
+
+                        } catch (Exception ex) {
+                            JOptionPane.showMessageDialog(null,"Hata Kodu:"+ex.getMessage(),
+                                    "Bir Hata Oluştu (reddet)",JOptionPane.ERROR_MESSAGE);
+                        }
+                    });
+                    rightPanel.add(denyBtn);
+
                     panel.add(leftPanel);
                     panel.add(rightPanel);
 

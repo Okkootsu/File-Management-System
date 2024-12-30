@@ -88,7 +88,7 @@ public class MysqlConnector {
         }
     }
 
-    public void updateFriends(String oldName, String newName) {
+    public void updateName(String oldName, String newName) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -109,9 +109,14 @@ public class MysqlConnector {
 
             statement.execute(query);
 
+            query = "UPDATE password_requests " +
+                    "SET user_name = CASE WHEN user_name = '"+oldName+"' THEN '"+newName+"' ELSE user_name END ";
+
+            statement.execute(query);
+
         } catch (Exception exception) {
             JOptionPane.showMessageDialog(null,"Hata Kodu: "+exception.getMessage(),
-                    "Bir Hata Oluştu(updateFriends)",JOptionPane.ERROR_MESSAGE);
+                    "Bir Hata Oluştu(updateName)",JOptionPane.ERROR_MESSAGE);
         }
     }
 
