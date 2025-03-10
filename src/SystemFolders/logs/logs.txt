@@ -376,3 +376,57 @@
 2024-12-30 16:24:42 INFO    mustafa kullanıcı adını hüseyin olarak değiştirdi  
 2024-12-30 16:24:58 INFO    hüseyin adlı kullanıcı çıkış yaptı 
 2024-12-30 16:25:03 INFO    admin tarafından başarıyla giriş yapıldı 
+2024-12-30 16:41:16 INFO    Uygulama açıldı 
+2024-12-30 16:41:22 INFO    admin tarafından başarıyla giriş yapıldı 
+2024-12-30 20:21:52 INFO    Uygulama açıldı 
+2024-12-30 20:22:09 WARNING Başarısız kayıt olma işlemi 
+2024-12-30 20:22:20 INFO    cihan adlı kullanıcı sisteme başarıyla kayıt oldu 
+2024-12-30 20:22:30 WARNING cihan tarafından başarısız giriş yapma işlemi 
+2024-12-30 20:22:32 INFO    cihan tarafından başarıyla giriş yapıldı 
+2024-12-30 20:22:44 INFO    cihan kullanıcı adını yiğit olarak değiştirdi  
+2024-12-30 20:23:22 INFO    yiğit tarafından furkan adlı kişiye takım isteği gönderildi 
+2024-12-30 20:23:33 INFO    yiğit adlı kullanıcı bireysel OriginalFolders dizinine deneme6.txt adlı dosyayı yükledi 
+2024-12-30 20:23:38 INFO    yiğit adlı kullanıcı bireysel OriginalFolders dizininde dosya düzenlemesini açtı 
+2024-12-30 20:23:50 INFO    yiğit adlı kullanıcı bireysel OriginalFolders dizininde dosya düzenlemesini açtı 
+2024-12-30 20:23:54 INFO    yiğit adlı kullanıcı bireysel SavedFolders dizinine yedekleme yaptı 
+2024-12-30 20:24:33 INFO    yiğit adlı kullanıcı bireysel OriginalFolders dizininden deneme6.txt adlı dosyayı sildi 
+2024-12-30 20:24:51 INFO    yiğit adlı kullanıcı bireysel SavedFolders dizinini boşalttı 
+2024-12-30 20:25:01 INFO    yiğit adlı kullanıcı bireysel OriginalFolders dizinine deneme.txt adlı dosyayı yükledi 
+2024-12-30 20:25:03 INFO    yiğit adlı kullanıcı bireysel OriginalFolders dizinine deneme2.txt adlı dosyayı yükledi 
+2024-12-30 20:25:05 INFO    yiğit adlı kullanıcı için otomatik yedekleme yapıldı 
+2024-12-30 20:25:20 INFO    yiğit adlı kullanıcı için otomatik yedekleme yapıldı 
+2024-12-30 20:26:01 INFO    yiğit adlı kullanıcı şifre değiştirme talebinde bulundu 
+2024-12-30 20:27:19 INFO    yiğit adlı kullanıcı çıkış yaptı 
+2024-12-30 20:27:56 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-30 20:28:09 INFO    furkan tarafından yiğit adlı kişi takım arkadaşı olarak eklendi 
+2024-12-30 20:28:46 INFO    furkan adlı kullanıcı  deneme3.txt adlı dosyayı kendi takım klasörüne ekledi  
+2024-12-30 20:28:49 INFO    furkan adlı kullanıcı takım dizininden deneme2.txt adlı dosyayı sildi 
+2024-12-30 20:28:55 INFO    furkan adlı kullanıcı deneme3.txt adlı dosyayı kendi takım klasöründe açtı  
+2024-12-30 20:29:14 INFO    furkan adlı kullanıcı takım arkadaşlarıyla TeamFolders dizinindeki dosyalarını paylaştı  
+2024-12-30 20:29:51 INFO    Uygulama açıldı 
+2024-12-30 20:29:56 WARNING admin tarafından başarısız giriş yapma işlemi 
+2024-12-30 20:30:02 WARNING admin tarafından başarısız giriş yapma işlemi 
+2024-12-30 20:30:03 WARNING admin tarafından başarısız giriş yapma işlemi 
+2024-12-30 20:30:03 SEVERE  admin tarafından anormal durum tespit edildi 
+2024-12-30 20:30:09 INFO    admin tarafından başarıyla giriş yapıldı 
+2024-12-30 20:30:48 INFO    yiğit adlı kullanıcının maksimum dosya kapasitesi 3 olarak değiştirildi  
+2024-12-30 20:31:00 INFO    yiğit adlı kullanıcının şifre değiştirme talebi reddedildi 
+2024-12-31 12:16:26 INFO    Uygulama açıldı 
+2024-12-31 12:16:37 WARNING volkan tarafından başarısız giriş yapma işlemi 
+2024-12-31 12:16:39 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-31 12:17:08 INFO    volkan tarafından hüseyin adlı kişiye takım isteği gönderildi 
+2024-12-31 12:17:15 INFO    volkan adlı kullanıcı çıkış yaptı 
+2024-12-31 12:17:22 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-31 12:17:50 INFO    volkan adlı kullanıcı takım arkadaşlarıyla TeamFolders dizinindeki dosyalarını paylaştı  
+2024-12-31 12:18:50 INFO    volkan adlı kullanıcı çıkış yaptı 
+2024-12-31 12:18:57 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-31 12:19:04 INFO    furkan adlı kullanıcı çıkış yaptı 
+2024-12-31 12:19:09 INFO    volkan tarafından başarıyla giriş yapıldı 
+2024-12-31 12:19:17 INFO    volkan adlı kullanıcı  deneme3.txt adlı dosyayı kendi takım klasörüne ekledi  
+2024-12-31 12:19:19 INFO    volkan adlı kullanıcı takım arkadaşlarıyla TeamFolders dizinindeki dosyalarını paylaştı  
+2024-12-31 12:19:27 INFO    volkan adlı kullanıcı çıkış yaptı 
+2024-12-31 12:19:32 INFO    furkan tarafından başarıyla giriş yapıldı 
+2024-12-31 12:19:59 INFO    furkan adlı kullanıcı bireysel OriginalFolders dizininde dosya düzenlemesini açtı 
+2024-12-31 12:20:10 INFO    furkan adlı kullanıcı bireysel OriginalFolders dizininde dosya düzenlemesini açtı 
+2024-12-31 12:23:42 INFO    furkan adlı kullanıcı çıkış yaptı 
+2025-01-28 19:47:43 INFO    Uygulama açıldı 

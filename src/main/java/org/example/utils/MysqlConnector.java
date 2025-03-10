@@ -2,16 +2,32 @@ package org.example.utils;
 
 
 import javax.swing.*;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Properties;
 
 public class MysqlConnector {
 
-    private final String sqlConnection = "jdbc:mysql://127.0.0.1:3306/foldersystemdb";
-    private final String sqlUsername = "root";
-    private final String sqlPassword = "volkancomp159357258A";
+    private final String sqlConnection;
+    private final String sqlUsername;
+    private final String sqlPassword;
+
+    public MysqlConnector () {
+        Properties properties = new Properties();
+        try (FileInputStream input = new FileInputStream("src/main/java/org/example/utils/config.properties")) {
+            properties.load(input);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Hata Kodu:"+e.getMessage(),
+                    "Bir Hata Oluştu",JOptionPane.ERROR_MESSAGE);
+        }
+
+        this.sqlConnection = properties.getProperty("db.url");
+        this.sqlUsername = properties.getProperty("db.user");
+        this.sqlPassword = properties.getProperty("db.password");
+    }
 
     public String getSqlConnection() {
         return sqlConnection;
