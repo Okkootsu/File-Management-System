@@ -430,3 +430,8 @@
 2024-12-31 12:20:10 INFO    furkan adlı kullanıcı bireysel OriginalFolders dizininde dosya düzenlemesini açtı 
 2024-12-31 12:23:42 INFO    furkan adlı kullanıcı çıkış yaptı 
 2025-01-28 19:47:43 INFO    Uygulama açıldı 
+2025-03-10 21:28:46 INFO    Uygulama açıldı 
+2025-03-10 21:28:59 WARNING Başarısız kayıt olma işlemi 
+2025-03-10 21:29:08 INFO    kerem adlı kullanıcı sisteme başarıyla kayıt oldu 
+2025-03-10 21:29:15 INFO    kerem tarafından başarıyla giriş yapıldı 
+2025-03-10 21:29:33 INFO    kerem kullanıcı adını eren olarak değiştirdi  
