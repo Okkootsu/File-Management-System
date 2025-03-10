@@ -38,6 +38,6 @@ build/
 .DS_Store
 
 ### Diğer ###
-.properties
+config.properties
 logs/
-SystemFolders/
+logs.txt
